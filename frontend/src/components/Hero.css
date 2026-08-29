@@ -1,0 +1,199 @@
+.hero {
+  position: relative;
+  padding: 60px 20px;
+  overflow: hidden;
+  font-family: "Dosis", Sans-serif;
+  background-image: url("../images/Jaune-1.2.png");     /* adapte à toute la section *//* montre bien les nuages */
+  background-repeat: no-repeat;
+        background-size: 100% 100%;
+
+}
+.hero-navbar {
+   position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10000;
+}
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+    position: relative;
+  z-index: 2;
+  
+}
+.hero-text {
+  flex: 1;
+  max-width: 700px;
+  z-index: 2;
+font-weight: 900;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: ultraFadeText 3.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.sub-heading { font-size: 1.2rem; color: #ff7f50; margin-bottom: 10px; }
+.main-heading { font-size: 60px; font-weight: bold; margin-bottom: 20px; line-height: 1.2; }
+.main-heading span { color: #ff7f50; }
+.desc { font-size: 20px; line-height: 1.6; margin-bottom: 30px; color: #555;font-weight: 700; }
+
+.hero-button {
+  display: inline-block;
+  padding: 14px 28px;
+  background-color: #ff7f50;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+.hero-button:hover { background-color: #ff7f50; transform: translateY(-3px); }
+
+.hero-images {
+  flex: 1;
+  position: relative;
+  max-width: 500px;
+  margin-top: 30px;
+
+  opacity: 0;
+  transform: translateY(15px);
+
+  animation: fadeImageSlow 5s ease-out 1.5s forwards;
+}
+.hero-shape {
+  position: absolute;
+ top: 60px;
+  left: 60px;
+  width: 80%;
+  z-index: 1;
+}
+
+.hero-boy {
+  position: relative;
+  width: 100%;
+  z-index: 2;
+  animation: floatBoy 5s ease-in-out infinite;
+}
+
+@keyframes ultraFadeText {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeImageSlow {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-features{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+}
+@media (max-width:1024px) {
+  .hero-container {  text-align: center; 
+  margin-top: 30px;}
+  .hero-text { max-width: 100%; }
+  .hero-images { max-width: 80%; margin: 0 auto 50px auto; }
+      .hero {
+   background-size: auto 100%;
+  padding: 90px 20px;}
+        .hero-button {
+  padding: 10px 15px;
+}
+       
+    }
+
+@media (max-width: 768px) {
+    .hero {
+        min-height: auto;
+        background-size: auto 100%;
+        background-position: center top;
+        background-repeat: no-repeat;
+    }
+
+    /* Cacher complètement les images sur mobile */
+    .hero-images {
+        display: none;
+    }
+
+    /* Le texte prend toute la largeur */
+    .hero-container {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-top:20px;
+    }
+
+    .hero-text {
+        width: 100%;
+        max-width: 100%;
+      margin-bottom: 40px;
+      width: 100%;
+        max-width: 100%;
+        margin-bottom: 40px;
+
+        opacity: 0;
+        transform: translateY(70px);
+
+            animation: heroTextMobile 4s cubic-bezier(0.22, 1, 0.36, 1) forwards; 
+    } 
+
+    @keyframes heroTextMobile { 
+        0% { 
+            opacity: 0; 
+            transform: translateY(120px); 
+        } 
+
+        100% { 
+            opacity: 1; 
+            transform: translateY(0); 
+        } 
+    } 
+
+    .sub-heading {
+        font-size: 1rem;
+        margin-bottom: 8px;
+    }
+
+    .main-heading {
+        font-size: 38px;
+        line-height: 1.15;
+        margin-bottom: 15px;
+    }
+
+    .desc {
+        font-size: 17px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+    }
+
+    .hero-button {
+        padding: 12px 24px;
+        font-size: 16px;
+    }
+
+    /* Évite que les éléments de nuage prennent de la place */
+    .nuage-container {
+        display: none;
+    }
+}

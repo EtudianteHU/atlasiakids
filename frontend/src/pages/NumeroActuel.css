@@ -1,0 +1,157 @@
+/* =========================
+   DESKTOP
+   1024px et plus
+   ========================= */
+.jaHeroCovers {
+  height: 460px;
+  margin: 70px auto 40px;
+}
+
+.jaHeroImg {
+  width: 290px;
+}
+
+.jaHeroLeft {
+  transform: translateX(-118%) rotate(-8deg);
+}
+
+.jaHeroRight {
+  transform: translateX(-8%) rotate(6deg);
+}
+
+.jaGrid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.jaPanel {
+  min-height: 480px;
+}
+
+.jaPanelInner {
+  padding: 44px 24px 56px;
+}
+
+.jaImgWrap {
+  width: 280px;
+  height: 180px;
+}
+
+.jaImg {
+  max-width: 500px;
+}
+
+.jaPanelTitle {
+  font-size: 36px;
+}
+
+
+/* =========================
+   TABLETTE
+   768px à 1023px
+   ========================= */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .jaHeroCovers {
+    height: 360px;
+    margin: 50px auto 30px;
+  }
+
+  .jaHeroImg {
+    width: 230px;
+  }
+
+  .jaHeroLeft {
+    transform: translateX(-118%) rotate(-7deg);
+  }
+
+  .jaHeroRight {
+    transform: translateX(-10%) rotate(6deg);
+  }
+
+
+  .jaPanel {
+    min-height: auto;
+  }
+
+  .jaPanelInner {
+    padding: 46px 18px 50px;
+  }
+
+  .jaImgWrap {
+    width: 230px;
+    height: 150px;
+  }
+
+  .jaImg {
+    max-width: 210px;
+  }
+
+  .jaPanelTitle {
+    font-size: 32px;
+  }
+}
+
+
+/* =========================
+   TÉLÉPHONE
+   jusqu'à 767px
+   ========================= */
+@media (max-width: 767px) {
+  .jaHeroCovers {
+    height: 280px;
+    margin: 40px auto 20px;
+  }
+
+  .jaHeroImg {
+    width: 180px;
+    border-radius: 14px;
+  }
+
+  .jaHeroLeft {
+    transform: translateX(-112%) rotate(-6deg);
+  }
+
+  .jaHeroRight {
+    transform: translateX(-8%) rotate(5deg);
+  }
+
+  .jaGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .jaPanel {
+    min-height: auto;
+  }
+
+  .jaPanelInner {
+    padding: 36px 16px 40px;
+  }
+
+  .jaImgWrap {
+    width: 200px;
+    height: 130px;
+  }
+
+  .jaImg {
+    max-width: 180px;
+  }
+
+  .jaPanelTitle {
+    font-size: 26px;
+  }
+
+  .jaListItem {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .jaDesc {
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 0 16px;
+  }
+
+  .jaBtn {
+    font-size: 14px;
+    padding: 11px 18px;
+  }
+}

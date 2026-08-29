@@ -1,0 +1,120 @@
+.about {
+  width: 100%;
+  padding: 80px 40px;
+  position: relative;
+  overflow: hidden;
+}
+/* 🌊 WAVE BACKGROUND */
+.about-wave {
+  position: absolute;
+  bottom: -40px;   /* 👈 descend la wave */
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background-image: url("../images/wave.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  transform: scaleY(-1);
+  transform-origin: center;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.about-container {
+  max-width: 1400px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 60px;
+  
+}
+.about-kicker{
+ color: #f36b21;
+}
+
+.about-image {
+  display: flex;
+  justify-content: center;
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+}
+
+.about-text {
+  color: noir;
+  font-size: 16px;
+}
+
+.about-title {
+  font-size: 38px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.about-paragraph {
+  font-size: 18px;
+  line-height: 1.8;
+}
+.about-btn{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+  padding: 13px 28px;
+  border-radius: 14px;
+  background: #f26f2d;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  transition: 0.25s ease;
+}
+/* TABLETTE SEULEMENT */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  .about-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .aproposNous .about-image img {
+    width: 80%;
+    margin: auto;
+    display: block;
+  }
+
+   .aproposNous .about-title {
+    font-size: 42px;
+  }
+.about-paragraph {
+  font-size: 16px;
+
+}
+}
+
+/* MOBILE */
+
+@media (max-width: 767px) {
+
+  .about-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .about-title {
+    font-size: 32px;
+  }
+.about-paragraph {
+  font-size: 15px;
+  line-height: 1.8;
+}
+}

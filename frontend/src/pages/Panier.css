@@ -1,0 +1,477 @@
+.panierPage{
+  background: #fff;
+  padding: 0;
+}
+
+.panierWrap{
+  width: 100%;
+}
+
+.panierTable{
+  width: 100%;
+}
+
+/* HEADER DESKTOP */
+.panierHead{
+  display: grid;
+  grid-template-columns: 2.6fr 0.9fr 1.1fr 1fr 0.6fr;
+  align-items: center;
+  background: #18c9d3;
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 24px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.panierHead > div:first-child{
+  text-align: center;
+}
+
+/* LIGNE PRODUIT */
+.panierRow{
+  display: grid;
+  grid-template-columns: 2.6fr 0.9fr 1.1fr 1fr 0.6fr;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #ececec;
+}
+
+/* PRODUIT */
+.produitCell{
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  align-items: center;
+  gap: 20px;
+}
+
+.prodImg{
+  width: 150px;
+  height: 210px;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+
+.prodTitle{
+  margin: 0;
+  color: #182fae;
+  font-size: 22px;
+  line-height: 1.45;
+  font-weight: 700;
+  text-align: center;
+  max-width: 420px;
+}
+
+/* PRIX + TOTAL */
+.priceCell,
+.totalCell{
+  color: #182fae;
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.qtyCell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+/* BOX GLOBALE */
+.qtyWrapper{
+  display: flex;
+  align-items: center;
+}
+
+.qtyBtn{
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+
+.qtyBtn:hover{
+  background:#f7f7f7;
+}
+
+/* valeur */
+.qtyBox{
+  min-width: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* RETIRER */
+.removeCell{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.removeBtn{
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.removeBtn:hover{
+  background: #f7f7f7;
+}
+
+/* MOBILE META */
+.mobileMetaHead{
+  display: none;
+}
+
+.mobileMetaValues{
+  display: contents;
+}
+
+/* BAS DU PANIER */
+.panierBottom{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 24px;
+}
+
+.bottomRight{
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 18px;
+  max-width: 820px;
+}
+
+.subtotalRow{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.subtotalLabel,
+.subtotalValue{
+  color: #182fae;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.smallText{
+  font-size: 18px;
+  line-height: 1.5;
+  color: #111;
+  text-align: right;
+  font-style: italic;
+}
+
+.btnRow{
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+ 
+}
+
+.panierBtn{
+  border: none;
+  background: #18c9d3;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 16px 32px;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.panierBtn:hover{
+  opacity: 0.92;
+}
+
+.clearBtn{
+  border: none;
+  background: transparent;
+  color: #111;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.panierEmpty{
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+/* ================= TABLETTE ================= */
+@media (min-width: 769px) and (max-width: 1024px){
+  .panierHead{
+    grid-template-columns: 2.2fr 1fr 1.1fr 1fr 0.6fr;
+    font-size: 18px;
+    padding: 20px 14px;
+  }
+
+  .panierRow{
+    grid-template-columns: 2.2fr 1fr 1.1fr 1fr 0.6fr;
+    gap: 12px;
+    padding: 20px 14px;
+  }
+
+  .produitCell{
+    grid-template-columns: 140px 1fr;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .prodImg{
+    width: 130px;
+    height: 190px;
+  }
+
+  .prodTitle{
+    max-width: 100%;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.35;
+  }
+
+  .priceCell,
+  .totalCell{
+    font-size: 18px;
+  }
+
+  .qtyCell{
+    gap: 14px;
+  }
+
+  .qtyBtn{
+    font-size: 28px;
+  }
+
+  .qtyBox{
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
+  }
+
+  .removeBtn{
+    font-size: 36px;
+  }
+
+  .panierBottom{
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .bottomRight{
+    align-items: flex-start;
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .smallText{
+    text-align: left;
+    font-size: 16px;
+  }
+
+  .btnRow{
+    justify-content: flex-start;
+  }
+
+  .subtotalLabel,
+  .subtotalValue{
+    font-size: 20px;
+  }
+}
+
+/* ================= TELEPHONE ================= */
+@media (max-width: 768px){
+  .panierHead{
+    display: none;
+  }
+
+  .panierRow{
+    display: block;
+    padding: 18px 14px;
+    border-bottom: 1px solid #e9e9e9;
+  }
+
+  .produitCell{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .prodImg{
+    width: 120px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  .prodTitle{
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.35;
+    text-align: left;
+    max-width: 100%;
+  }
+
+  .mobileMetaHead{
+    display: grid;
+    grid-template-columns: 1fr 1.3fr 1fr 0.8fr;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #182fae;
+    text-align: left;
+  }
+
+  .mobileMetaValues{
+    display: grid;
+    grid-template-columns: 1fr 1.3fr 1fr 0.8fr;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .priceCell,
+  .totalCell{
+    font-size: 16px;
+    font-weight: 700;
+    color: #182fae;
+    text-align: left;
+  }
+
+.qtyWrapper{
+  gap: 10px;
+}
+
+ .qtyBtn{
+  width: 34px;
+  height: 34px;
+
+  font-size: 22px;
+  border-radius: 8px;
+}
+
+.qtyBox{
+  width: 34px;
+  height: 34px;
+
+  background: #f1f1f1;
+  font-size: 16px;
+}
+
+  .removeCell{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.removeBtn{
+  width: 34px;
+  height: 34px;
+  font-size: 20px;
+  border-radius: 8px;
+}
+
+  .panierBottom{
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px 14px 28px;
+    gap: 18px;
+  }
+
+  .noteLink{
+    font-size: 14px;
+  }
+
+  .noteBlock{
+    max-width: 100%;
+  }
+
+  .noteLabel{
+    font-size: 15px;
+  }
+
+  .noteTextarea{
+    min-height: 150px;
+    font-size: 15px;
+  }
+
+  .bottomRight{
+    margin-left: 0;
+    max-width: 100%;
+    align-items: flex-start;
+  }
+
+  .subtotalRow{
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .subtotalLabel,
+  .subtotalValue{
+    font-size: 18px;
+  }
+
+  .smallText{
+    font-size: 14px;
+    line-height: 1.45;
+    text-align: left;
+  }
+
+  .btnRow{
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .panierBtn{
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
+    padding: 13px 18px;
+  }
+
+  .clearBtn{
+    font-size: 14px;
+  }
+
+  .panierEmpty{
+    padding: 24px 12px;
+    gap: 12px;
+  }
+  .panierBtn{
+width: 50%;;
+}
+}

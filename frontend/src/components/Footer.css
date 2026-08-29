@@ -1,0 +1,166 @@
+
+
+/* ===== FOOTER + IMAGE EN BAS ===== */
+.akFooter{
+  position: relative;              /* ✅ pour .akCopy en absolute */
+  background-color: #fff;
+
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: 110% auto;
+
+  padding-top: 70px;
+  padding-bottom: 300px;           /* ✅ laisse la place à l'image */
+  overflow: hidden;
+}
+
+/* ===== 4 COLONNES ===== */
+.akFooterInner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr 1.3fr;
+  gap: 60px;
+  align-items: start;
+}
+
+
+
+/* ===== LOGO ===== */
+.akLogo {
+  width:130px;
+  margin-bottom: 15px;
+}
+
+/* ===== TEXTE ===== */
+.akDesc {
+  font-size: 18px;
+  line-height: 1.7;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+/* ===== TITRES + 2 TRAITS CÔTE À CÔTE ===== */
+.akTitle {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 20px;
+}
+
+.akTitle::after{
+  content: "";
+  display: block;
+  margin-top: 8px;
+  height: 3px;
+  width: 70px;
+  background:
+    linear-gradient(#ff7b2f,#ff7b2f) left center / 22px 3px no-repeat,
+    linear-gradient(#ff7b2f,#ff7b2f) 30px center / 40px 3px no-repeat;
+}
+
+/* ===== LISTE ===== */
+.akList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.akList li {
+  margin-bottom: 12px;
+}
+
+.akLink {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 18px;
+}
+
+.akLink:hover {
+  color: #ff7b2f;
+}
+
+.akLabel {
+  color: #ff7b2f;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.akValue {
+  margin-bottom: 10px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+/* ===== SOCIAUX ===== */
+.akSocial {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.akSocialLink {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+}
+
+
+.akSocialIcon {
+  width: 20px;
+  height: 20px;
+}
+/* ===== COPYRIGHT SUR L’HERBE ===== */
+.akCopy {
+  position: absolute;
+  bottom: 45px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: white;
+  font-size: 18px;
+  text-shadow: 0px 2px 5px rgba(0,0,0,0.5);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .akFooter {
+    padding-bottom: 260px;
+    background-size: 140% auto;
+  }
+
+  .akFooterInner {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .akFooter {
+    padding-top: 50px;
+    padding-bottom: 240px;
+    background-size: 180% auto;
+  }
+
+  .akFooterInner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+.akLogo {
+  width: 130px;
+  height: auto;
+}
+.akLink,
+.akSocialLink {
+  pointer-events: auto;
+  position: relative;
+  z-index: 10;
+}
+}

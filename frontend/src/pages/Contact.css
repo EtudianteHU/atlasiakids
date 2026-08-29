@@ -1,0 +1,136 @@
+/* ===== SECTION ===== */
+
+
+.contactSection {
+  padding: 70px 0;
+  background: #fff;
+}
+
+/* ===== CONTAINER (2 colonnes) ===== */
+.contactContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* ===== LEFT ===== */
+.contactLeft {
+  display: flex;
+  flex-direction: column;
+}
+
+.contactTitle {
+  font-size: 62px;
+  font-weight: 700;
+  color: #333;
+  line-height: 1.05;
+  margin: 0 0 34px;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.infoItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.infoIcon {
+  color: #f26522; /* orange Atlasia */
+  margin-top: 5px;
+  min-width: 22px;
+}
+
+.infoItem h4 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+  color: #111;
+}
+
+.infoItem p {
+  margin: 4px 0 0;
+  font-size: 16px;
+  color: #444;
+  line-height: 1.5;
+}
+
+/* ===== FORM ===== */
+.contactForm {
+  background: transparent;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.contactForm input,
+.contactForm textarea {
+  width: 100%;
+  padding: 16px 18px;
+  border: none;
+  border-radius: 18px;
+  outline: none;
+  font-size: 15px;
+  background: #f2f2f2;
+  color: #222;
+}
+
+.contactForm textarea {
+  min-height: 180px;
+  resize: vertical;
+  margin-bottom: 18px;
+}
+
+.contactBtn {
+  border: none;
+  border-radius: 999px;
+  padding: 14px 26px;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  background: #f26522;
+  color: #fff;
+}
+
+.status {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #111;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .contactContainer {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .contactTitle {
+    font-size: 42px;
+    text-align: center;
+  }
+
+  .grid2 {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 768px) {
+  .contactTitle {
+   font-size: 42px;
+   }
+   .camModal{
+    top: 90px;
+   }
+   }

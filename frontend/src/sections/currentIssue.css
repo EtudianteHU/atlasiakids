@@ -1,0 +1,208 @@
+.ciSection {
+  position: relative;
+  width: 100%;
+  background: #f3f1ee;
+  padding: 80px 20px;
+  overflow: hidden;
+}
+
+/* snake */
+.ciSnake {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  width: min(380px, 45vw);
+  height: auto;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.ciWrap {
+  position: relative;
+  z-index: 3;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.ciKids {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  display: block;
+}
+
+/* Text */
+.ciKicker {
+  margin: 0 0 10px;
+  color: #f47a20;
+  font-weight: 800;
+}
+
+.ciTitle {
+  margin: 0 0 14px;
+  font-size: clamp(36px, 4vw, 62px);
+  line-height: 1.05;
+  color: #2b2b2b;
+  font-weight: 900;
+}
+
+.ciUnderline {
+  position: relative;
+  display: inline-block;
+}
+
+.ciUnderline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  width: 100%;
+  height: 8px;
+  background: #f7b500;
+  border-radius: 999px;
+  z-index: -1;
+}
+.current-wave {
+  position: absolute;
+  bottom: -40px;   /* 👈 descend la wave */
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background-image: url("../images/wave.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  transform: scaleY(-1);
+  transform-origin: center;
+  z-index: 1;
+  pointer-events: none;
+}
+.ciText {
+  margin: 0 0 22px;
+  color: #666;
+  line-height: 1.7;
+  font-size: 18px;
+}
+
+.ciBars {
+  margin-top: 6px;
+}
+
+/* Bars */
+.ciBar {
+  margin: 14px 0;
+}
+
+.ciBarTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+
+.ciBarLabel {
+  font-weight: 900;
+  color: #2b2b2b;
+}
+
+.ciBarPct {
+  font-weight: 900;
+  color: #f47a20;
+}
+
+.ciTrack {
+  width: 100%;
+  height: 10px;
+  background: #ddd;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+/* ✅ Remplissage : part de 0 puis va vers --target */
+.ciFill {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+}
+
+.ciFill--go {
+ animation: fillBar 2500ms cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes fillBar {
+  from { width: 0%; }
+  to { width: var(--target); }
+}
+
+.ciFill--green { background: #4caf7d; }
+.ciFill--orange { background: #f7b500; }
+.ciFill--gray { background: #cfcfcf; }
+
+.ciBtn {
+  margin-top: 26px;
+  background: #f47a20;
+  color: #fff;
+  border: 0;
+  padding: 14px 26px;
+  border-radius: 14px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.ciBtn:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+/* =========================
+   ✅ Fade In Up (comme Elementor)
+   Déclenché par .is-visible
+   ========================= */
+.ciFadeUp {
+  opacity: 0;
+  transform: translateY(22px);
+}
+
+.ciSection.is-visible .ciFadeUp {
+  animation: fadeUp 1200ms ease-out forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .ciWrap {
+    text-align: center;
+  }
+  .ciUnderline::after {
+  height: 5px;
+ bottom:0px;
+}
+  }
+/* Responsive */
+@media (max-width: 767px) {
+  .ciWrap {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .ciSnake {
+    right: 10px;
+    top: 10px;
+    opacity: 0.9;
+  }
+  .ciUnderline::after {
+  height: 4px;
+  bottom: 0.5px;
+ 
+}
+}

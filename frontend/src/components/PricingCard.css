@@ -1,0 +1,208 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+.pricingPage{
+  padding: 110px 20px 80px;
+  background: white;
+  font-family: "Poppins", sans-serif;
+  overflow: visible;
+}
+
+.cardsRow{
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+
+/* ===== CARTE ===== */
+.priceCard{
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 28px rgba(0,0,0,.10);
+  border: 1px solid rgba(0,0,0,.04);
+  overflow: visible;
+  width:24rem;
+  height: 350px;
+}
+
+/* ✅ TEXTE AU-DESSUS DES IMAGES */
+.topBar,
+.cardBody{
+  position: relative;
+  z-index: 3;
+}
+
+/* ===== BARRE VERTE ===== */
+.topBar{
+  background: #64c774;
+  padding: 28px 20px;
+  text-align: center;
+  border-radius: 12px 12px 0 0;
+}
+
+.topTitle{
+  margin: 0;
+  font-size: 22px;
+  font-weight: 900;
+  color: #0f0f0f;
+}
+
+/* ===== RUBAN POPULAIRE (OK) ===== */
+.ribbonDiag{
+  position: absolute;
+  top: 14px;
+  right: -46px;
+  transform: rotate(45deg);
+  background: #55b965;
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: .5px;
+  font-size: 12px;
+  padding: 8px 60px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.12);
+  z-index: 4;
+  pointer-events: none;
+}
+
+/* ===== BODY ===== */
+.cardBody{
+  padding: 34px 26px 28px;
+  text-align: center;
+}
+
+.priceCenter{
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 6px;
+  line-height: 1;
+  margin-top: 8px;
+}
+
+.currencyTop{
+  font-size: 14px;
+  font-weight: 800;
+  margin-top: 8px;
+  color: #111;
+}
+
+.priceBig{
+  font-size: 64px;
+  font-weight: 900;
+  color: #111;
+  letter-spacing: -2px;
+}
+
+.periodUnder{
+  margin-top: 6px;
+  font-size: 16px;
+  color: #5b5b5b;
+}
+
+/* ===== LISTE ===== */
+.features{
+  list-style: none;
+  padding: 22px 0 0;
+  margin: 0;
+  text-align: left;
+}
+
+.featureItem{
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 16px 0;
+  color: #4f4f4f;
+  font-size: 16px;
+}
+
+.checkIcon{
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #64c774;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  color: #64c774;
+  line-height: 1;
+  font-size: 14px;
+}
+
+.divider{
+  height: 1px;
+  background: #64c774;
+  opacity: 0.55;
+}
+
+/* ===== CTA ===== */
+.ctaBtn{
+  margin-top: 24px;
+  background: #55b965;
+  border: none;
+  color: #fff;
+  font-weight: 800;
+  font-size: 14px;
+  padding: 12px 28px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform .12s ease, opacity .12s ease;
+}
+
+.ctaBtn:hover{
+  transform: translateY(-1px);
+  opacity: .95;
+}
+
+/* ===== MASCOTTES (DÉCALÉES + DERRIÈRE TEXTE) ===== */
+.cardMascotLeft{
+  position: absolute;
+  top: -10px;
+  left: -180px;
+  width: 200px;
+  z-index: 1;       /* ✅ derrière le texte */
+  pointer-events: none;
+  user-select: none;
+}
+
+.cardMascotRight{
+  position: absolute;
+  top: 40px;
+  right: -200px;    /* ✅ décale + (change si besoin) */
+  width: 220px;
+  z-index: 1;       /* ✅ derrière le texte */
+  pointer-events: none;
+  user-select: none;
+}
+
+@keyframes floaty{
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .cardsRow{
+    grid-template-columns: 1fr;
+    max-width: 620px;
+    gap: 34px;
+  }
+
+  .cardMascotLeft,
+  .cardMascotRight{
+    display: none;
+  }
+  .topTitle{ font-size: 19px; }
+  .priceBig{ font-size: 70px; }
+  .ribbonDiag{
+  top: 16px;
+  padding: 8px 40px;
+  
+}
+}

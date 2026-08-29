@@ -1,0 +1,164 @@
+.next-issue-section {
+  position: relative;
+  overflow:hidden;
+  padding-bottom: 100px;
+    font-family: "Dosis", Sans-serif;
+}
+.about-3-section .text h2 {
+  color: #000 !important;
+}
+
+.about-3-section .text p {
+  color: #000 !important;
+  font-weight: 300;
+    margin-bottom: 16px;
+}
+
+.about-3-section .text li {
+  color: #000 !important;
+}
+.about-3-section .section-media {
+  object-fit: cover;
+   object-position: center;
+   height:650px;
+   max-width: 100%;
+}
+.about-3-section .media {
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 40px;
+}
+.about-3-section {
+  padding-bottom: 0 !important;
+}
+   .about-3-section .text  {
+margin-top: 16px;
+}
+/* 🌊 WAVE BACKGROUND */
+.wave {
+  position: absolute;
+  bottom: -40px;   /* 👈 descend la wave */
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background-image: url("../images/wave.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  transform: scaleY(-1);
+  transform-origin: center;
+  z-index: 1;
+  pointer-events: none;
+}
+/* contenu au-dessus */
+.content-wrapper {
+  position: relative;
+  z-index: 2;
+}
+/* CONTENT AU-DESSUS */
+/* ===== WRAPPER ===== */ .content-wrapper 
+{ max-width: 1720px; margin: 65px auto; display: flex;  align-items: flex-start; gap: 48px; padding: 0 32px; } 
+.content-wrapper.reverse { flex-direction: row-reverse; } .media, .text { flex: 1; }
+
+.media, .text
+ { flex: 1; 
+}
+
+/* ===== MEDIA (IMAGE / VIDEO) ===== */
+ .media { min-width: 0; display: flex; justify-content: center; align-items: center; } /* images */
+  .section-media { width: 90%; max-width: 760px; height: auto; display: block; object-fit: cover; margin: 0 auto; } /*
+   Limite uniquement la 5e image */ 
+   .fifth-image { max-width: 400px; } /* vidéos */ 
+   .media video, .media iframe
+    { width: 100%; max-width: 760px; height: auto; display: block; margin: 0 auto; }
+
+/* ===== TEXT ===== */ .text
+ { padding-top: 8px; position: relative; z-index: 2; } 
+ .section-subtitle { margin: 0 0 14px; font-size: 18px; line-height: 1.2; font-weight: 700; color: #EE7526; } 
+ .text h2 { margin: 0 0 28px; color: #f8f4ea; font-size: 62px; line-height: 1.06; font-weight: 800; letter-spacing: -1px; }
+  .text p, .text li
+   { color: #f8f4ea; font-size: 18px; line-height: 1.5; font-weight: 600; } 
+   .text ul { margin: 0; padding-left: 0; list-style: none; } 
+   .text li { position: relative; padding-left: 18px; margin-bottom: 8px; } .text li::before { content: "•"; position: absolute; left: 0; top: 0; color: #f26f2d; font-size: 24px; line-height: 1.2; }
+  
+/* ===== BUTTON ===== */
+ .section-button 
+ { display: inline-flex; justify-content: center; align-items: center; margin-top: 24px; padding: 13px 28px; border-radius: 14px; background: #f26f2d; color: #fff; text-decoration: none; font-weight: 700; border: none; cursor: pointer; text-align: center; transition: 0.25s ease; } 
+ .section-button:hover 
+ { transform: translateY(-2px); opacity: 0.95; }
+
+/* ===== TURTLE ===== */
+.turtle {
+  position: relative;
+  width: 250px;
+  margin-top: -130px;
+  margin-left: auto;
+  margin-right: 20px;
+  z-index: 20;
+}
+
+ /* ========================= TABLETTE ========================= */
+  @media (max-width: 1024px) { .content-wrapper { gap: 36px; padding: 0 24px; } .media { margin-top: 60px; } 
+  .section-media, .media video, .media iframe { max-width: 620px; } .text h2 { font-size: 38px; }
+   .text p, .text li { font-size: 16px; line-height: 1.6; } 
+   .section-button { padding: 12px 24px; font-size: 15px; }
+    .turtle { width: 200px; } 
+
+   .about-3-section .text  {
+margin-top: 40px;
+}
+.about-3-section .text p {
+    margin-bottom:6px;
+}
+.about-3-section .section-media {
+height:550px ;
+margin-top:15px ;
+}
+   .wave {   /* 👈 descend la wave */
+  bottom:-3px;
+  height:40px;
+  }  }
+/* MOBILE */
+@media (max-width: 768px) {
+  .next-issue-section 
+  { padding: 40px 0; }
+   .content-wrapper, .content-wrapper.reverse 
+   { flex-direction: column; padding: 0 20px; gap: 28px; align-items: center; text-align: center; }
+  
+.media { margin-top: 0; width: 100%; }
+  .turtle {
+    display: none;
+  }
+  .section-media, .media video, .media iframe 
+  { width: 100%; 
+  max-width: 480px;}
+   .text { width: 100%; }
+   .text h2 { font-size: 30px; line-height: 1.08; } 
+   .text p, .text li { font-size: 15px; line-height: 1.5; }
+   .section-button { max-width: 320px; margin: 24px auto 0; padding: 14px 20px; }
+   .fifth-image { max-width: 400px; }
+   .next-issue-section.about-3-section {
+    padding-top: 0 !important;
+  }
+    /* POINTS SUR UNE SEULE COLONNE SUR MOBILE */
+  .next-issue-section .text ul {
+    display: block !important;
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none;
+  }
+
+  .next-issue-section .text li {
+    display: block !important;
+    width: 100% !important;
+    position: relative;
+    padding-left: 18px !important;
+    margin-bottom: 8px;
+    text-align: left;
+    box-sizing: border-box;
+  }
+ .wave {   
+  height:20px;
+  } 
+}

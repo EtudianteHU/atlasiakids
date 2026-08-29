@@ -1,0 +1,155 @@
+.mcWrap{
+  position: relative;
+  display: inline-block;
+}
+
+.mcIconBtn{
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  background:#fff;
+  border: 2px dashed #6fd3e4;
+  cursor: pointer;
+  display:grid;
+  place-items:center;
+  position: relative;
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+    overflow: visible; /* IMPORTANT */
+}
+.mcIcon{
+  font-size: 20px;
+  line-height: 1;
+}
+.mcBadge{
+  position:absolute;
+  top: -6px;
+  right: -6px;
+
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+
+  border-radius: 999px;
+
+  background: #ff2d2d;
+  color:#fff;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1;
+
+  border: 2px solid #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,.2);
+}
+/* dropdown */
+.mcPop{
+  position:absolute;
+  right: 0;
+  top: calc(100% + 10px);
+  width: 360px;
+  background:#fff;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.18);
+  overflow: hidden;
+  z-index: 9999;
+}
+
+/* items (scroll like screenshot) */
+.mcItems{
+  max-height: 190px;
+  overflow:auto;
+  padding: 14px 14px 6px;
+}
+
+.mcRow{
+  display:flex;
+  gap: 12px;
+  align-items:flex-start;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.mcThumb{
+  width: 60px;
+  height: 78px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #e8e8e8;
+}
+
+.mcText{ flex:1; }
+
+.mcTitle{
+  font-weight: 900;
+  color:#111;
+  line-height:1.2;
+  margin-top: 2px;
+}
+
+.mcLine{
+  margin-top: 8px;
+  color:#111;
+}
+
+.mcRemove{
+  border:none;
+  background:transparent;
+  cursor:pointer;
+  font-size: 24px;
+  font-weight: 900;
+  color:#111;
+  line-height:1;
+}
+
+/* total */
+.mcTotalRow{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap: 12px;
+  padding: 14px 14px;
+  border-top: 1px solid #f0f0f0;
+  color:#9a9a9a;
+  font-weight: 900;
+  letter-spacing: .2px;
+}
+
+.mcTotalValue{
+  color:#14c7cf;
+  font-weight: 900;
+}
+
+/* buttons */
+.mcBtns{
+  display:flex;
+  gap: 14px;
+  justify-content:center;
+  padding: 14px 14px 18px;
+}
+
+.mcBtn{
+  border:none;
+  cursor:pointer;
+  padding: 14px 18px;
+  border-radius: 999px;
+  background:#14c7cf;
+  color:#fff;
+  font-weight: 900;
+  min-width: 140px;
+}
+
+.mcBtn:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+.mcEmpty{
+  padding: 18px 0;
+  text-align:center;
+  color:#555;
+  font-weight: 700;
+}

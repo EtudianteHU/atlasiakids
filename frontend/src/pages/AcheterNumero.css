@@ -1,0 +1,194 @@
+/* =========================
+   AcheterNumero.css (COMPLET)
+   - Overlay VERT animé (haut -> bas)
+   - Bouton ORANGE "Cliquez ici"
+   - Effets uniquement sur ordinateur (hover)
+========================= */
+
+/* --------- Page --------- */
+.anPage {
+  background: #ffffff;
+  padding: 28px 24px 0;
+  max-width: 1280px;
+  margin: 0 auto;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* --------- Grid --------- */
+.anGrid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(170px, 1fr));
+  gap: 28px;
+  align-items: start;
+}
+
+/* --------- Card link --------- */
+.anCardLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* --------- Card --------- */
+.anCard {
+  border-radius: 10px;
+  overflow: hidden;
+  background: transparent;
+  transition: transform 0.2s ease;
+}
+
+/* --------- Cover --------- */
+.anCoverWrap {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f3f3f3;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
+}
+
+/* IMAGE */
+.anCover {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+/* OVERLAY VERT animé du haut vers le bas */
+.anCoverWrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(32, 214, 168, 0.55) 0%,
+    rgba(32, 214, 168, 0.35) 100%
+  );
+  transform: translateY(-100%);  /* commence caché en haut */
+  transition: transform 0.35s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* --------- Bouton ORANGE --------- */
+.anAddBtn {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 2px dashed #fff;
+  cursor: pointer;
+  background: #ff7a2f;
+  color: #fff;
+  font-weight: 900;
+
+  opacity: 1;          /* 🔥 toujours visible */
+  transform: none;
+  z-index: 10;
+}
+.anAddBtn:hover {
+  filter: brightness(0.98);
+}
+
+/* --------- Sold out --------- */
+.anSoldOutCircle {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.anSoldOutCircle span {
+  width: 120px;
+  height: 120px;
+  border-radius: 999px;
+  background: #e3162e;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  text-transform: uppercase;
+  box-shadow: 0 12px 30px rgba(227, 22, 46, 0.35);
+}
+
+/* --------- Info --------- */
+.anInfo {
+  text-align: center;
+  padding-top: 12px;
+}
+
+.anIssueTitle {
+  font-weight: 700;
+  font-size: 15px;
+  color: #111;
+  line-height: 1.25;
+  margin: 0 6px 8px;
+}
+
+.anPrice {
+  font-size: 18px;
+  font-weight: 900;
+  color: #1d3fd3;
+}
+
+/* ======================
+   PC UNIQUEMENT (hover)
+====================== */
+@media (hover: hover) and (pointer: fine) {
+
+  /* le vert descend du haut vers le bas */
+  .anCardLink:hover .anCoverWrap::after {
+    transform: translateY(0);
+  }
+
+  /* zoom image */
+  .anCardLink:hover .anCover {
+    transform: scale(1.05);
+  }
+
+  /* bouton apparaît */
+ .anAddBtn {
+  opacity: 1;
+}
+
+  /* carte monte */
+  .anCardLink:hover .anCard {
+    transform: translateY(-5px);
+  }
+
+  /* enlever l'outline au clic (optionnel) */
+  .anCardLink:focus,
+  .anCardLink:active {
+    outline: none;
+  }
+}
+
+/* --------- Responsive --------- */
+@media (max-width: 1200px) {
+  .anGrid { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 980px) {
+  .anGrid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+  .anGrid {
+    grid-template-columns: 1fr; /* 👈 UNE colonne */
+     justify-items: center;
+  }
+    .anCard {
+    width: 100%;
+    max-width: 260px; /* 👈 réduit la largeur */
+  }
+
+  .anCover {
+    height: auto; /* 👈 garde bonnes proportions */
+  }
+  .anAddBtn {
+    opacity: 1;
+    transform: none;
+  }
+}

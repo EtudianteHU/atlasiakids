@@ -1,0 +1,145 @@
+.authPage {
+  min-height: 115vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f4f7ff;
+  padding: 20px;
+}
+
+.authCard {
+  background: #fff;
+  border-radius: 16px;
+  padding: 48px 40px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+.authLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.authLogo img {
+  width: 180px;
+  height: auto;
+  display: block;
+}
+.authCard h1 {
+  font-size: 1.8rem;
+  color: #1a2b4a;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.authCard .authSub {
+  color: #888;
+  text-align: center;
+  margin-bottom: 28px;
+  font-size: 0.95rem;
+}
+
+.authField {
+  margin-bottom: 18px;
+}
+
+.authField label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 6px;
+}
+
+.authField input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.authField input:focus {
+  outline: none;
+  border-color: #f26522;
+}
+
+.authBtn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: #f26522;
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s;
+}
+
+.authBtn:hover {
+  background: #d9551a;
+}
+
+.authBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.authError {
+  background: #fff0f0;
+  color: #c00;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.authBottom {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.authBottom a {
+  color: #f26522;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.authBottom a:hover {
+  text-decoration: underline;
+}
+
+.authRow {
+  display: flex;
+  gap: 12px;
+}
+
+.authRow .authField {
+  flex: 1;
+}
+
+.authLogo {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 1.6rem;
+  font-weight: 900;
+}
+
+.authLogo .c1 { color: #f26522; }
+.authLogo .c2 { color: #27a9e1; }
+.authLogo .c3 { color: #8dc63f; }
+.authLogo .c4 { color: #1a2b4a; }
+.authLogo .kids {
+  color: #f26522;
+  font-size: 0.7em;
+  margin-left: 2px;
+}

@@ -1,0 +1,37 @@
+.accountPage{
+  min-height: 100vh;
+  background: #f8f8f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.accountCard{
+  width: 100%;
+  max-width: 500px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.accountCard h1{
+  margin: 0 0 20px;
+}
+
+.accountCard p{
+  margin: 12px 0;
+  font-size: 16px;
+}
+
+.accountBtn{
+  margin-top: 20px;
+  border: none;
+  background: #f26522;
+  color: #fff;
+  padding: 14px 22px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 700;
+}

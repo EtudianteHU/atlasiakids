@@ -1,0 +1,314 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600;700&display=swap");
+/* =========================
+   ROOT VARIABLES
+========================= */
+:root {
+  --font-body: "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Arial, sans-serif;
+
+  --font-title: "Fredoka", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Arial, sans-serif;
+
+  --bg: #f7f8fc;
+  --card: #ffffff;
+  --text: #2b2b2b;
+
+  --primary: #6c5ce7;
+  --primary-hover: #5a4bd6;
+}
+
+/* =========================
+   RESET
+========================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.6;
+  background: var(--bg);
+  color: var(--text);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  overflow-x: hidden;
+    position: relative !important;
+}
+.ckPage{
+  --checkout-font: "Poppins", sans-serif;
+}
+
+.ckPage,
+.ckPage input,
+.ckPage button,
+.ckPage select,
+.ckPage textarea{
+  font-family: var(--checkout-font);
+}
+/* =========================
+   ROOT APP STRUCTURE
+========================= */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================
+   PAGE LAYOUT FIX (IMPORTANT)
+========================= */
+.page-layout {
+  flex: 1;
+  min-height: 0;
+}
+
+
+/* FOOTER PUSH FIX */
+.footer {
+  margin-top: auto;
+}
+
+/* =========================
+   IMAGES
+========================= */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+.app-container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+/* =========================
+   LAYOUT HELPERS
+========================= */
+.layout {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+.sidebar {
+  width: 260px;
+  background: white;
+  padding: 20px;
+  border-right: 1px solid #eee;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+/* =========================
+   NAV ITEMS
+========================= */
+.nav-item {
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 8px;
+  transition: 0.2s;
+  font-family: var(--font-title);
+}
+
+.nav-item:hover {
+  background: #f1f2f6;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.content {
+  flex: 1;
+  min-height: 0;
+}
+/* =========================
+   CARD
+========================= */
+.card {
+  background: var(--card);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+html {
+  overflow: auto !important;
+  height: auto !important;
+}
+/* =========================
+   BUTTONS
+========================= */
+button {
+  font-weight: 500;
+  border: none;
+    outline: none;
+  border-radius: 12px;
+font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+  background: transparent;
+    position: relative;
+
+  -webkit-tap-highlight-color: transparent;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.25);
+  border-radius: 12px;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.btn-soft {
+  background: #f1f2f6;
+  color: #2f3542;
+}
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+
+  border-radius: 50%;
+
+  background: #000 !important;
+
+  pointer-events: none;
+
+  transform: translate(-50%, -50%);
+
+  z-index: 999999;
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+
+  transition: width 0.15s ease, height 0.15s ease;
+}
+/* =========================
+   LINKS
+========================= */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 1024px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  .content {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    padding: 0 16px;
+  }
+
+  .content {
+    padding: 16px;
+  }
+
+  .sidebar {
+    padding: 16px;
+  }
+}
+/* =========================
+   CUSTOM CURSOR
+========================= */
+
+body {
+  cursor: auto;
+  
+}
+
+a,
+button,
+input,
+textarea,
+select,
+.nav-item {
+  cursor: pointer;
+}
+
+* {
+ font-family: "Dosis", sans-serif;
+}

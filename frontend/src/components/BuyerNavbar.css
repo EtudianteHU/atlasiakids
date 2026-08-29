@@ -1,0 +1,275 @@
+/* =========================
+   BuyerNavbar.css COMPLET
+========================= */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+.buyerNavWrap{
+  position: sticky;
+  top:  0px;
+  z-index: 999999;
+ background: #eee9dc;
+}
+
+/* =========================
+   BARRE PRINCIPALE
+========================= */
+.buyerNav{
+  height: 86px;
+  display: grid;
+  grid-template-columns: 260px 1fr 260px;
+  align-items: center;
+  padding: 0 26px;
+  border-bottom: 1px solid #efefef;
+}
+
+/* =========================
+   LEFT (LOGO)
+========================= */
+.buyerNav__left{
+  display:flex;
+  align-items:center;
+}
+
+.buyerNav__logo{
+  display:flex;
+  align-items:center;
+  cursor:pointer;
+}
+
+.buyerNav__logoImg{
+  height: 100px;
+  width: 100px;
+  object-fit: contain;
+  display: block;
+  transition: transform .2s ease;
+}
+
+.buyerNav__logo:hover .buyerNav__logoImg{
+  transform: scale(1.03);
+}
+
+/* =========================
+   CENTER LINKS
+========================= */
+.buyerNav__center{
+  display:flex;
+  justify-content:center;
+  gap: 26px;
+  align-items:center;
+  flex-wrap: wrap;        /* ✅ IMPORTANT */
+  white-space: normal;    /* ✅ IMPORTANT */
+}
+.buyerNav__link{
+    font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+  font-size: 16px;
+  letter-spacing: .4px;
+  color:#111;
+  text-decoration:none;
+  padding: 8px 10px;
+  position: relative;
+  transition: transform 0.15s ease;
+  overflow: hidden; /* IMPORTANT */
+  border-radius: 8px;
+}
+
+/* effet pression */
+.buyerNav__link:active{
+  transform: scale(0.92);
+}
+
+/* effet bleu */
+.buyerNav__link::after{
+  content:"";
+  position:absolute;
+  inset: 0;
+  background: rgba(0, 132, 255, 0.25);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  border-radius: 8px;
+}
+
+.buyerNav__link:active::after{
+  opacity: 1;
+}
+/* =========================
+   RIGHT
+========================= */
+.buyerNav__right{
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap: 14px;
+}
+
+/* =========================
+   LOGIN BUTTON
+========================= */
+.buyerNav__login{
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display:flex;
+  gap: 8px;
+  align-items:center;
+  font-weight: 900;
+  color:#111;
+  padding: 10px 10px;
+  border-radius: 10px;
+}
+
+.buyerNav__login:hover{
+  background:#f5f5f5;
+}
+
+.buyerNav__userIcon{
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  display:grid;
+  place-items:center;
+  background:#fff;
+  border: 1px solid #eaeaea;
+}
+
+/* =========================
+   SOUS BARRE BLOGS
+========================= */
+.buyerNav__sub{
+  height: 54px;
+  display:grid;
+  place-items:center;
+  background:#12c7cf;
+  color:#fff;
+  font-weight: 1000;
+  letter-spacing: 2px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* =========================
+   USER DROPDOWN
+========================= */
+.buyerNavUser{
+  position: relative;
+  display: inline-block;
+}
+
+.buyerNavUserMenu{
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+  width: 280px;
+  background: #fff;
+  box-shadow: 0 18px 50px rgba(0,0,0,.18);
+  border-radius: 10px;
+  padding: 14px 0;
+  z-index: 999999;
+}
+
+.buyerNavUserItem{
+  width: 100%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  font-size: 16px;
+  font-weight: 900;
+  color: #111;
+}
+
+.buyerNavUserItem:hover{
+  background: #f5f5f5;
+}
+
+.buyerNavUserItem .ico{
+  width: 22px;
+}
+
+.buyerNavUserInfo{
+  padding: 8px 18px 12px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #555;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 4px;
+}
+
+/* =========================
+   TABLETTE
+========================= */
+@media (max-width: 1024px){
+
+  .buyerNav{
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "logo right"
+      "center center";
+    height: auto;
+    padding: 14px 14px 10px;
+    row-gap: 10px;
+  }
+
+  .buyerNav__left{
+    grid-area: logo;
+  }
+
+  .buyerNav__right{
+    grid-area: right;
+  }
+
+  .buyerNav__center{
+    grid-area: center;
+    justify-content:flex-start;
+    overflow:auto;
+    padding-bottom: 6px;
+  }
+
+
+  .buyerNav__link{
+    font-size: 14px;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 767px){
+
+  .buyerNav{
+    padding: 10px;
+  }
+
+  .buyerNav__link{
+    font-size: 13px;
+  }
+
+  .buyerNav__login span:last-child{
+    display: none;
+  }
+
+  .buyerNav__userIcon{
+    width: 30px;
+    height: 30px;
+  }
+
+  .buyerNav__right{
+    gap: 6px;
+  }
+
+  .buyerNav__sub{
+    font-size: 16px;
+    height: 48px;
+  }
+
+  .buyerNavUserMenu{
+    width: 220px;
+  }
+
+  .buyerNavUserItem{
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+}

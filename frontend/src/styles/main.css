@@ -1,0 +1,42 @@
+:root {
+  --color-orange: #f26522;
+  --color-orange-dark: #d9551a;
+  --color-blue: #27a9e1;
+  --color-blue-dark: #1a8ac4;
+  --color-green: #8dc63f;
+  --color-navy: #1a2b4a;
+  --color-bg: #f4f7ff;
+  --color-white: #ffffff;
+  --color-gray-light: #f5f5f5;
+  --color-gray: #888;
+  --color-text: #333;
+  --radius: 12px;
+  --radius-lg: 16px;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--color-bg);
+}
+
+.container {
+  padding: 20px;
+}
+
+.cards {
+  display: flex;
+  gap: 16px;
+}
+
+.card {
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: black;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}

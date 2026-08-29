@@ -1,0 +1,52 @@
+[
+  {
+    "id": "about-1",
+    "title": "Pourquoi tout le monde adore Atlasia Kids ?",
+    "points": [
+      "Histoires inspirantes des Prophètes (que la paix soit sur eux)",
+      "Contenu captivant sur le thème du Coran",
+      "Contes populaires du monde entier",
+      "Des énigmes, des blagues hilarantes, des bandes dessinées et des jeux",
+      "De magnifiques illustrations de haute qualité",
+      "Des moments privilégiés partagés en famille et entre amis"
+    ],
+    "video": "/videos/about-kids2.mp4",
+    "decorImage": "/images/turtle.png",
+     "backgroundImage": "/images/pattern-2.png",
+       "backgroundColor": "#4DB374",
+    "reverse": false
+  },
+
+  {
+    "id": "about-2",
+    "title": "Cultiver la curiosité,la joie et la foi chez les jeunes coeurs",
+       "backgroundImage": "/images/pattern-2.png",
+         "backgroundColor": "#4DB374",
+    "paragraphs": [
+      "Chez Atlasia Kids, notre mission est d’éveiller le cœur, l’esprit et l’imagination des enfants grâce à des histoires inspirantes, un apprentissage ludique et des contenus empreints de foi, le tout présenté avec une qualité d’illustration et de design exceptionnelle.",
+      "Nous rêvons d’un monde où chaque enfant musulman se reconnaît dans de belles histoires, s’épanouit en affirmant son identité et se sent connecté à une communauté mondiale unie par des valeurs partagées.",
+      "À travers les récits des Prophètes (que la paix soit sur eux), des activités créatives et des illustrations inspirantes, nous donnons vie à la foi et à l’imagination, page après page."
+    ],
+    "video": "/videos/about-kids.mp4",
+      "backgroundImage": "/images/pattern-2.png",
+        "backgroundColor": "#4DB374",
+    "reverse": true,
+    "centerVideo": true
+  },
+{
+  "id": "about-3",
+"title": "Une équipe soudée,\nune mission partagée,\nun magazine joyeux",
+  "paragraphs": [
+    "Chez Atlasia Kids, nous sommes une équipe passionnée de rédacteurs, d'auteurs, d'illustrateurs et d'éducateurs – une famille internationale unie par notre amour des enfants, des histoires et de la foi.",
+    "Originaires des quatre coins du monde, nous nous réunissons avec un objectif commun : créer un espace où les enfants se sentent vus, valorisés et inspirés. Un espace où ils peuvent explorer leur foi avec joie, développer leur personnalité à travers les histoires et s'émerveiller du monde qui les entoure.",
+    "Depuis notre tout premier numéro en septembre 2026, chaque page d'Atlasia Kids a été conçue avec soin pour nourrir la foi, stimuler l'imagination et accompagner les familles dans l'éducation d'enfants confiants, bienveillants et spirituellement ancrés – le tout présenté avec une qualité d'illustration, de conception et de créativité irréprochable.",
+    "Nous espérons qu'en ouvrant notre magazine, chaque enfant se sentira comme chez lui."
+  ],
+  "buttonText": "Abonnez-vous maintenant",
+  "buttonLink": "https://atlasiakids.com/subscribe/",
+  "image": "/images/AU1.png",
+  "backgroundImage": "/images/pattern-2.png",
+  "backgroundColor": "white",
+  "reverse": false
+}
+]

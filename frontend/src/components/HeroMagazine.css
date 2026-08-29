@@ -1,0 +1,394 @@
+@font-face {
+  font-family: 'kindergarten';
+  src: url('../fonts/kindergarten.woff') format('woff'),
+       url('../fonts/kindergarten.ttf') format('truetype');
+}
+* {
+  box-sizing: border-box;
+}
+.hero-magazine {
+  width: 100%;
+  min-height: 100vh;
+  padding: 100px 20px 70px;
+  background: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-magazine-navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10000;
+}
+.hero-magazine-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.kg {
+  font-family: 'kindergarten';
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+}
+
+.kg-paint:before {
+  content: "\e909"; /* ⚠️ à remplacer par la vraie valeur */
+}
+.kg-educator:before {
+  content: "\e905";
+}
+.kg:before {
+  font-family: 'kindergarten';
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+}
+.hero-icon {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.hero-icon i {
+  color: white;
+  font-size: 50px;
+}
+
+.hero-icon--orange {
+  background: #f36b21;
+}
+
+.hero-icon--blue {
+  background: #8fb9d6;
+}
+
+
+/* HEADER */
+
+.hero-magazine-text {
+  max-width: 1100px;
+  margin: 0 auto 80px;
+  text-align: center;
+}
+
+.hero-top-text {
+  display: block;
+  margin-bottom: 18px;
+  color: #f36b21;
+  font-size: 18px;
+    font-weight: 500;
+    line-height: 28px;
+}
+
+.hero-title {
+  margin: 0 auto 24px;
+  max-width: 1100px;
+  color: #353535;
+  font-size: 62px;
+  font-weight: 900;
+  line-height: 1.08;
+}
+.numero-actuel-hero .hero-cta-title {
+  color: unset;
+}
+.numero-actuel-hero .hero-cta-text {
+  color: unset;
+}
+.hero-highlight {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+}
+
+.hero-highlight::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 2px;
+  height: 8px;
+  background: #f4b400;
+  border-radius: 999px;
+  z-index: -1;
+}
+
+.hero-subtitle {
+  max-width: 1180px;
+  margin: 0 auto;
+  color: #555555;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* GRID */
+
+.hero-cta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 72px;
+  align-items: start;
+}
+
+/* ITEM */
+
+.hero-cta-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: visible;
+}
+
+/* COVER */
+
+.hero-cta-cover {
+  position: relative;
+  width: 240px;
+  height: 380px;
+  border-radius: 18px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.14);
+  margin-bottom: -120px;
+
+}
+
+.hero-cta-cover--right {
+  transform: translateY(12px);
+}
+
+/* CARD */
+
+.hero-cta-card {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  min-height: 280px;
+  border-radius: 34px;
+  z-index: 1;
+  overflow: visible;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* CONTENT */
+
+.hero-card-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 5px;
+  z-index: 2;
+  padding: 0 34px 70px;
+  text-align: left;
+}
+
+.hero-cta-title {
+  margin: 0 0 14px;
+  color: #ffffff;
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.hero-cta-text {
+  margin: 0;
+  max-width: 90%;
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* BUTTON */
+
+.hero-cta-btn {
+  position: absolute;
+  left: 50%;
+  bottom: -25px;
+  transform: translateX(-50%);
+  width: 55px;
+  height: 45px;
+  border: none;
+  border-radius: 18px;
+  color: #ffffff;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 3;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.hero-cta-btn:hover {
+  transform: translateX(-50%) translateY(-2px);
+  opacity: 0.95;
+}
+
+.hero-cta-btn--orange {
+  background: #f36b21;
+}
+
+.hero-cta-btn--blue {
+  background: #4c7dbe;
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+.hero-highlight::after {
+  bottom: 0px;
+  height: 6px;
+
+}
+  }
+
+  .jaPanelInner {
+    padding: 50px 16px 40px;
+  }
+/* MOBILE */
+
+@media (max-width: 768px) {
+  .hero-magazine {
+    padding: 70px 16px 50px;
+  }
+
+  .hero-magazine-text {
+    margin: 0 auto 50px;
+  }
+
+  .hero-title {
+    font-size: 34px;
+    line-height: 1.2;
+  }
+.hero-highlight::after {
+  bottom: 0px;
+  height: 5px;
+
+}
+  .hero-subtitle {
+    font-size: 15px;
+    padding: 0 10px;
+  }
+
+  .hero-cta-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .hero-cta-cover {
+    width: 220px;
+    height: 280px;
+  
+  }
+
+  .hero-cta-cover--right {
+    transform: none;
+  }
+
+  .hero-cta-card {
+    min-height: 260px;
+    border-radius: 24px;
+    background-size: cover;
+  
+  }
+
+  .hero-card-content {
+    padding: 0 20px 56px;
+    bottom: 55px;
+  }
+
+  .hero-cta-title {
+    font-size: 22px;
+  }
+
+  .hero-cta-text {
+    font-size: 15px;
+    max-width: 100%;
+  }
+
+  .hero-cta-btn {
+    width: 52px;
+    height: 52px;
+    font-size: 22px;
+    border-radius: 16px;
+    bottom:-80px;
+  }
+  .hero-icon i {
+  font-size: 40px;
+}
+}
+
+/* TABLETTE */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hero-title {
+    font-size: 42px;
+  }
+
+  .hero-subtitle {
+    font-size: 17px;
+    max-width: 700px;
+    margin: auto;
+  }
+
+  .hero-cta-grid {
+    gap: 40px;
+  }
+
+   .hero-cta-cover {
+    width: 180px;
+    height: 240px;
+    margin-bottom: -70px;
+  }
+
+  .hero-cta-card {
+    max-width: 480px;
+    min-height: 230px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero-icon {
+    width: 80px;
+    height: 80px;
+  }
+   .hero-card-content {
+    padding: 40px 20px 60px;
+    bottom: 0px;
+  }
+
+  .hero-cta-title {
+    font-size: 26px;
+  }
+
+  .hero-cta-text {
+    font-size: 16px;
+  }
+
+  .hero-cta-btn {
+    width: 60px;
+    height: 50px;
+    font-size: 26px;
+    bottom:-25px;
+  }
+}
+@media (max-width: 767px) {
+     .hero-card-content {
+    bottom: 30px;
+  }
+    .hero-cta-btn {
+    bottom:-50px;
+  }
+   }

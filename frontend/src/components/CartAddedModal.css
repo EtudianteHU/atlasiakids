@@ -1,0 +1,138 @@
+.camOverlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  display: grid;
+  place-items: center;
+  z-index: 9999;
+}
+
+.camModal{
+  width: min(1050px, 92vw);
+  background: #fff;
+  border: 10px solid #ff5b6a; /* bord rose/rouge comme l’image */
+  border-radius: 6px;
+  padding: 26px 28px;
+  position: relative;
+  box-shadow: 0 30px 80px rgba(0,0,0,.35);
+}
+
+.camClose{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 2px solid #111;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.camContent{
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.camMsg{
+  font-size: 20px;
+  margin-bottom: 18px;
+  color: #222;
+}
+
+.camItemRow{
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.camThumb{
+  width: 74px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #e6e6e6;
+}
+
+.camItemTitle{
+  font-size: 28px;
+  font-weight: 900;
+  color: #1c2fae; /* bleu */
+  line-height: 1.1;
+  margin-top: 2px;
+}
+
+.camItemQty{
+  margin-top: 18px;
+  font-size: 16px;
+  color: #222;
+}
+
+.camRight{
+  text-align: center;
+  padding-top: 6px;
+}
+
+.camCount{
+  font-size: 18px;
+  color: #222;
+  margin-bottom: 22px;
+}
+
+.camTotal{
+  font-size: 44px;
+  font-weight: 900;
+  color: #111;
+  margin-bottom: 26px;
+}
+
+.camBtns{
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.camBtn{
+  border: none;
+  cursor: pointer;
+  padding: 16px 26px;
+  border-radius: 999px;
+  font-weight: 900;
+  letter-spacing: .3px;
+}
+
+.camBtnGhost{
+  background: #12c7cf;
+  color: #fff;
+}
+
+.camBtnSolid{
+  background: #12c7cf;
+  color: #fff;
+}
+
+@media (max-width: 767px){
+.camModal{
+top:160px;
+}
+.camContent {
+  display: grid;
+  grid-template-columns: none;
+  
+}
+.camItemTitle{
+  font-size: 20px;
+
+}
+.camMsg{
+  font-size: 15px;
+}
+.camTotal{
+  font-size: 30px;
+}
+
+}

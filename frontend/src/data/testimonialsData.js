@@ -1,0 +1,47 @@
+export const testimonialsData = [
+  {
+    id: 1,
+    name: "Ana",
+    role: "Médécin généraliste",
+    text: "Les illustrations sont magnifiques et les activités très bien pensées. Mes enfants adorent et moi aussi ! Ce premier numéro leur a permis d'apprendre plein de choses tout en développant de belles valeurs. Nous avons hâte de découvrir la suite.",
+    rating: 5,
+    logo: "/images/logo-t.png",
+    image: "/images/bleu.png",
+  },
+  {
+    id: 2,
+    name: "Ava",
+    role: "Échographiste",
+    text: "Un excellent choix pour les parents et les éducateurs. Les tests aident les enfants à découvrir leurs talents, et les articles sur la nature et la science sont très ludiques. Les illustrations apportent une vraie touche de magie à chaque page, rendant l’apprentissage encore plus agréable. Je recommande !",
+    rating: 5,
+    logo: "/images/logo-t.png",
+    image: "/images/jaune.png",
+  },
+  {
+    id: 3,
+    name: "Hayriye Solmaz",
+    role: "Professeure des écoles",
+    text: "Un immense coup de cœur pour le magazine Atlasia ! La qualité des contenus est exceptionnelle : des articles inspirants, bien écrits, élégants et très agréables à lire. On sent une vraie passion derrière chaque numéro. Atlasia allie parfaitement esthétique et pertinence. Je recommande à 100 %.",
+    rating: 5,
+    logo: "/images/logo-t.png",
+    image: "/images/rose.png",
+  },
+  {
+    id: 4,
+    name: "Asen Erkin",
+    role: "Data analyste",
+    text: "C'est un très beau projet pour enfants. Atlasia propose une approche ludique et éducative qui permet d'apprendre tout en s'amusant. Les activités sont bien pensées et adaptées aux plus jeunes. Les enfants adorent découvrir et attendent chaque nouveau numéro avec impatience.",
+    rating: 5,
+    logo: "/images/logo-t.png",
+    image: "/images/vert.png",
+  },
+  {
+    id: 5,
+    name: "Betul Yilmaz",
+    role: "Professeur",
+    text: "Très beau magazine pour enfants, à la fois éducatif et bienveillant. Les contenus sont variés : histoires, jeux et activités créatives. Mon enfant apprend en s’amusant et prend beaucoup de plaisir à le lire. Il attend chaque nouvelle édition avec impatience. Un excellent support pédagogique.",
+    rating: 5,
+    logo: "/images/logo-t.png",
+    image: "/images/rose.png",
+  }
+];

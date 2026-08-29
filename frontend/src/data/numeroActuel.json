@@ -1,0 +1,98 @@
+[
+{
+  "id": "numero-1",
+  "title": "Sakado",
+  "backgroundImage": "/images/pattern-2.png",
+  "backgroundColor": "#4DB374",
+  "points": [
+    "Pars avec Sakado à la découverte d’un pays célèbre pour son flamenco, ses fêtes et sa passion pour le football.",
+    "Rencontre Ramon, le nouvel ami de Sakado, et découvre avec eux une immense mer d’oliviers.",
+    "Explore l’art et la culture de ce pays, de Salvador Dalí aux aventures célèbres de Don Quichotte.",
+    "Découvre les nombreuses influences de la civilisation islamique, notamment dans la médecine, l’astronomie et la philosophie.",
+    "Visite de magnifiques monuments comme l’Alhambra et la Mosquée-Cathédrale de Cordoue, ainsi que la mosquée Abu Bakr de Madrid."
+  ],
+  "image": "/images/Atlasia1.png",
+  "buttonText": "Découvrir ce numéro",
+  "reverse": false
+},
+{
+  "id": "numero-2",
+  "title": "Histoire",
+  "backgroundImage": "/images/pattern-2.png",
+  "backgroundColor": "#E81D5C",
+  "points": [
+    "Découvre l’histoire de deux sœurs poules, Smiley et Grumpy, qui voient la vie de manière très différente.",
+    "Suis Smiley dans ses aventures amusantes alors qu’elle rêve de devenir une licorne, puis de voler dans le ciel.",
+    "Apprends que croire en soi peut nous aider à réaliser des choses que nous pensions impossibles.",
+    "Découvre comment Smiley montre à sa sœur que les poules peuvent elles aussi rencontrer un roi et vivre de grandes aventures.",
+    "Imagine avec Grumpy un avenir plein de possibilités, où elle pourrait même réaliser son rêve de devenir astronaute !"
+  ],
+  "image": "/images/Atlasia2.png",
+  "buttonText": "Découvrir ce numéro",
+  "reverse": true
+},
+{
+  "id": "numero-3",
+  "title": "Et si… ?",
+  "backgroundImage": "/images/pattern-2.png",
+  "backgroundColor": "#226BB3",
+  "points": [
+    "Découvre comment la couche d’ozone agit comme une immense protection qui protège la Terre des rayons dangereux du Soleil.",
+    "Imagine ce qui pourrait arriver aux plantes, aux animaux et aux humains si cette précieuse protection venait à disparaître.",
+    "Apprends que la couche d’ozone fait partie de notre atmosphère et qu’elle absorbe une grande partie des rayons UV nocifs.",
+    "Comprends pourquoi la couche d’ozone est un cadeau d’Allah qui nous protège chaque jour sans même que nous la voyions.",
+    "Agis pour prendre soin de notre belle planète grâce à de petits gestes comme planter, recycler, marcher ou économiser l’énergie."
+  ],
+  "image": "/images/Atlasia3.png",
+  "buttonText": "Découvrir ce numéro",
+  "reverse": false
+},
+{
+  "id": "numero-4",
+  "title": "Jeu du Baccalauréat",
+  "backgroundImage": "/images/pattern-2.png",
+  "backgroundColor": "#EF7625",
+  "points": [
+    "Découvre l’histoire de Bilâl ibn Rabâh, un compagnon du Prophète (pbsl) connu pour sa foi forte et sa grande patience.",
+    "Apprends que la lettre B peut être utilisée pour trouver des noms, des lieux, des animaux et des objets.",
+    "Pars à la découverte de Bakkah, l’ancien nom de La Mecque, où se trouve la Kaaba, la maison sacrée d’Allah.",
+    "Découvre l’histoire du Prophète Younous et de la baleine, qui nous rappelle qu’Allah accepte le repentir sincère.",
+    "Joue en famille avec la lettre B et cherche des noms, des lieux, des animaux et des objets qui commencent par cette lettre."
+  ],
+  "image": "/images/Atlasia4.png",
+  "buttonText": "Découvrir ce numéro",
+  "reverse": true
+},
+{
+  "id": "numero-actuel",
+  "title": "Qu'attendez-Vous ?",
+  "backgroundImage": "/images/pattern-2.png",
+  "backgroundColor": "#A5BE25",
+  "points": [
+    "Chaque page reflète les valeurs islamiques et aide les enfants à grandir dans la foi et le caractère.",
+    "Des illustrations éclatantes qui captivent les jeunes lecteurs et font de chaque numéro un véritable trésor.",
+    "Des vies de prophètes aux contes populaires du monde entier en passant par des œuvres de fiction originales, des histoires qui les marquent à jamais.",
+    "Des jeux, des bandes dessinées, des blagues et des activités de bricolage pour divertir tout en développant la créativité et la confiance en soi.",
+    "Les enfants se reconnaissent dans chaque histoire, chaque nom et chaque image, et sont fiers de qui ils sont.",
+    "Des éditeurs, des auteurs et des illustrateurs du monde entier, unis par leur amour des enfants et leur foi."
+  ],
+  "image": "/images/Actuel.png",
+  "buttonText": "Abonnez-Vous Maintenant",
+  "reverse": false
+},
+  {
+    "id": "promo-prochain-numero",
+    "title": "Ne Manquez Pas Le Prochain Numéro D'Atlasia Kids !",
+    "backgroundImage": "/images/pattern-2.png",
+       "backgroundColor": " #A5BE25",
+    "paragraphs": [
+      "Abonnez-vous avant le 10 du mois pour recevoir le prochain numéro, rempli d'histoires, d'activités et de joie pour toute la famille.",
+      "Assurez-vous d'être sur la liste de diffusion : chaque numéro est une nouvelle aventure !"
+    ],
+    "imageKey": "/images/SN3",
+   
+    "bgClass": "issuePromo",
+    "reverse": false,
+    "plan": "annuel"
+  }
+]
