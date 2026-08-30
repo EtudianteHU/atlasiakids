@@ -5,20 +5,35 @@ import nodemailer from "nodemailer";
 
 const router = Router();
 
-const stripe = new Stripe(
-  process.env.STRIPE_SECRET_KEY
-);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 // ==========================================
 // GMAIL
 // ==========================================
 
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
+  tls: {
+    rejectUnauthorized: false,
+  },
+});
+
+// ==========================================
+// GMAIL BAĞLANTI TESTİ
+// ==========================================
+
+transporter.verify((error, success) => {
+  if (error) {
+    console.error("❌ GMAIL BAĞLANTI HATASI:", error.message);
+  } else {
+    console.log("✅ GMAIL SMTP BAĞLANTISI BAŞARILI");
+  }
 });
 
 // ==========================================
@@ -26,12 +41,14 @@ const transporter = nodemailer.createTransport({
 // ==========================================
 
 router.post("/", async (req, res) => {
+  console.log("🔥 STRIPE WEBHOOK GELDİ");
+
   const signature = req.headers["stripe-signature"];
 
   let event;
 
   // ==========================================
-  // STRIPE SIGNATURE DOĞRULAMA
+  // STRIPE SIGNATURE
   // ==========================================
 
   try {
@@ -56,31 +73,32 @@ router.post("/", async (req, res) => {
   console.log("=================================");
 
   // ==========================================
-  // ÖDEME BAŞARILI
+  // CHECKOUT COMPLETED
   // ==========================================
 
   if (event.type === "checkout.session.completed") {
     const session = event.data.object;
 
     console.log("💰 CHECKOUT TAMAMLANDI");
+
     console.log("Session ID:", session.id);
+
     console.log(
       "Customer email:",
       session.customer_email
     );
+
     console.log(
       "Payment status:",
       session.payment_status
     );
 
     // ==========================================
-    // GERÇEKTEN ÖDENMİŞ Mİ?
+    // PAYMENT CHECK
     // ==========================================
 
     if (session.payment_status !== "paid") {
-      console.log(
-        "⚠️ Ödeme henüz paid değil."
-      );
+      console.log("⚠️ Ödeme paid değil.");
 
       return res.json({
         received: true,
@@ -92,12 +110,13 @@ router.post("/", async (req, res) => {
     );
 
     // ==========================================
-    // MÜŞTERİ BİLGİLERİ
+    // CUSTOMER
     // ==========================================
 
     const customerEmail =
       session.customer_email ||
       session.customer_details?.email ||
+      session.metadata?.email ||
       "";
 
     const customerName =
@@ -117,25 +136,29 @@ router.post("/", async (req, res) => {
     const paymentType =
       session.metadata?.type || "order";
 
-   const plan =
-  session.metadata?.plan === "annuel"
-    ? "Abonnement annuel Atlasia Kids"
-    : session.metadata?.plan || "";
+    const plan =
+      session.metadata?.plan === "annuel"
+        ? "Abonnement annuel Atlasia Kids"
+        : session.metadata?.plan || "";
+
+    console.log("👤 Client:", customerName);
+    console.log("📧 Client email:", customerEmail);
+    console.log("💰 Montant:", amount, currency);
 
     // ==========================================
-    // 1️⃣ ATLASIA'YA EMAIL
+    // 1️⃣ ATLASIA EMAIL
     // ==========================================
+
+    console.log("📨 Atlasia email gönderiliyor...");
 
     try {
-      await transporter.sendMail({
+      const info = await transporter.sendMail({
         from: process.env.EMAIL_USER,
         to: process.env.EMAIL_USER,
-
-        subject:
-          "💰 Nouveau paiement Atlasia Kids",
-
+        subject: "💰 Nouveau paiement Atlasia Kids",
         text: `
 NOUVEAU PAIEMENT REÇU
+
 =====================
 
 Client :
@@ -165,35 +188,41 @@ Paiement confirmé par Stripe.
         `,
       });
 
-      console.log(
-        "📧 Email envoyé à Atlasia"
-      );
+      console.log("✅ EMAIL ATLASIA ENVOYÉ");
+      console.log("📨 Message ID:", info.messageId);
+
     } catch (err) {
+
       console.error(
-        "❌ Erreur email Atlasia:",
+        "❌ ERREUR EMAIL ATLASIA:",
         err.message
       );
     }
 
     // ==========================================
-    // 2️⃣ EMAIL DE CONFIRMATION AU CLIENT
+    // 2️⃣ CLIENT EMAIL
     // ==========================================
 
     if (customerEmail) {
+
+      console.log(
+        "📨 Email client gönderiliyor..."
+      );
+
       try {
-        await transporter.sendMail({
+
+        const info = await transporter.sendMail({
           from: process.env.EMAIL_USER,
           to: customerEmail,
-
           subject:
             "✅ Confirmation de votre paiement - Atlasia Kids",
-
           text: `
 Bonjour ${customerName},
 
 Nous vous confirmons que votre paiement a bien été reçu.
 
 Montant payé :
+
 ${amount} ${currency}
 
 ${
@@ -204,6 +233,7 @@ ${plan}`
 }
 
 Paiement :
+
 Paiement unique par carte via Stripe.
 
 Votre paiement a été confirmé avec succès.
@@ -215,18 +245,27 @@ L'équipe Atlasia Kids
         });
 
         console.log(
-          "📧 Confirmation envoyée au client:",
+          "✅ EMAIL CLIENT ENVOYÉ:",
           customerEmail
         );
+
+        console.log(
+          "📨 Message ID:",
+          info.messageId
+        );
+
       } catch (err) {
+
         console.error(
-          "❌ Erreur email client:",
+          "❌ ERREUR EMAIL CLIENT:",
           err.message
         );
       }
+
     } else {
+
       console.log(
-        "⚠️ Aucun email client disponible."
+        "⚠️ AUCUN EMAIL CLIENT"
       );
     }
   }
