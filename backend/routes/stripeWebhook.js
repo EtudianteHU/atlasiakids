@@ -1,40 +1,13 @@
 
 import { Router } from "express";
 import Stripe from "stripe";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
 const router = Router();
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-// ==========================================
-// GMAIL
-// ==========================================
-
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-  tls: {
-    rejectUnauthorized: false,
-  },
-});
-
-// ==========================================
-// GMAIL BAĞLANTI TESTİ
-// ==========================================
-
-transporter.verify((error, success) => {
-  if (error) {
-    console.error("❌ GMAIL BAĞLANTI HATASI:", error.message);
-  } else {
-    console.log("✅ GMAIL SMTP BAĞLANTISI BAŞARILI");
-  }
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 // ==========================================
 // STRIPE WEBHOOK
@@ -80,18 +53,9 @@ router.post("/", async (req, res) => {
     const session = event.data.object;
 
     console.log("💰 CHECKOUT TAMAMLANDI");
-
     console.log("Session ID:", session.id);
-
-    console.log(
-      "Customer email:",
-      session.customer_email
-    );
-
-    console.log(
-      "Payment status:",
-      session.payment_status
-    );
+    console.log("Customer email:", session.customer_email);
+    console.log("Payment status:", session.payment_status);
 
     // ==========================================
     // PAYMENT CHECK
@@ -146,15 +110,30 @@ router.post("/", async (req, res) => {
     console.log("💰 Montant:", amount, currency);
 
     // ==========================================
+    // RESEND'DEN GÖNDEREN ADRES
+    // ==========================================
+    //
+    // Resend'de doğrulanmış domain'in yoksa
+    // şimdilik onboarding@resend.dev kullan.
+    //
+    // Domain doğruladıktan sonra bunu örneğin:
+    // contact@atlasiakids.fr
+    // şeklinde değiştirebiliriz.
+    //
+
+    const fromEmail =
+      process.env.EMAIL_FROM || "onboarding@resend.dev";
+
+    // ==========================================
     // 1️⃣ ATLASIA EMAIL
     // ==========================================
 
     console.log("📨 Atlasia email gönderiliyor...");
 
     try {
-      const info = await transporter.sendMail({
-        from: process.env.EMAIL_USER,
-        to: process.env.EMAIL_USER,
+      const { data, error } = await resend.emails.send({
+        from: `Atlasia Kids <${fromEmail}>`,
+        to: [process.env.EMAIL_USER],
         subject: "💰 Nouveau paiement Atlasia Kids",
         text: `
 NOUVEAU PAIEMENT REÇU
@@ -188,11 +167,13 @@ Paiement confirmé par Stripe.
         `,
       });
 
+      if (error) {
+        throw new Error(error.message);
+      }
+
       console.log("✅ EMAIL ATLASIA ENVOYÉ");
-      console.log("📨 Message ID:", info.messageId);
-
+      console.log("📨 Resend ID:", data?.id);
     } catch (err) {
-
       console.error(
         "❌ ERREUR EMAIL ATLASIA:",
         err.message
@@ -204,16 +185,12 @@ Paiement confirmé par Stripe.
     // ==========================================
 
     if (customerEmail) {
-
-      console.log(
-        "📨 Email client gönderiliyor..."
-      );
+      console.log("📨 Email client gönderiliyor...");
 
       try {
-
-        const info = await transporter.sendMail({
-          from: process.env.EMAIL_USER,
-          to: customerEmail,
+        const { data, error } = await resend.emails.send({
+          from: `Atlasia Kids <${fromEmail}>`,
+          to: [customerEmail],
           subject:
             "✅ Confirmation de votre paiement - Atlasia Kids",
           text: `
@@ -228,7 +205,10 @@ ${amount} ${currency}
 ${
   plan
     ? `Plan :
-${plan}`
+
+${plan}
+
+`
     : ""
 }
 
@@ -244,26 +224,26 @@ L'équipe Atlasia Kids
           `,
         });
 
+        if (error) {
+          throw new Error(error.message);
+        }
+
         console.log(
           "✅ EMAIL CLIENT ENVOYÉ:",
           customerEmail
         );
 
         console.log(
-          "📨 Message ID:",
-          info.messageId
+          "📨 Resend ID:",
+          data?.id
         );
-
       } catch (err) {
-
         console.error(
           "❌ ERREUR EMAIL CLIENT:",
           err.message
         );
       }
-
     } else {
-
       console.log(
         "⚠️ AUCUN EMAIL CLIENT"
       );
