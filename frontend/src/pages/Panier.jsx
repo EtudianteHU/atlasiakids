@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Panier.css";
 
@@ -30,7 +30,19 @@ export default function Panier() {
 
   const navigate = useNavigate();
   const [cart, setCart] = useState([]);
+  useEffect(() => {
+    const loadCart = () => {
+      setCart(readCart());
+    };
 
+    loadCart();
+
+    window.addEventListener("cartUpdated", loadCart);
+
+    return () => {
+      window.removeEventListener("cartUpdated", loadCart);
+    };
+  }, []);
   // ---------------- SUBTOTAL ----------------
   const subtotal = useMemo(() => {
     return cart.reduce((sum, it) => {

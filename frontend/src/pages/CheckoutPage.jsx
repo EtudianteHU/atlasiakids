@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import "./CheckoutPage.css";
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = process.env.REACT_APP_API_URL;
 
 const readCart = () => {
   try {
@@ -196,7 +196,19 @@ export default function CheckoutPage() {
           }
         );
 
-        const data = await res.json();
+      const text = await res.text();
+
+console.log("🔥 BACKEND CEVABI:", text);
+
+let data;
+
+try {
+  data = JSON.parse(text);
+} catch {
+  throw new Error(
+    `Backend JSON yerine şunu gönderdi: ${text.substring(0, 300)}`
+  );
+}
 
         if (!res.ok) {
           throw new Error(
@@ -261,7 +273,19 @@ const items = safeCart.map((item) => {
         }
       );
 
-      const data = await res.json();
+    const text = await res.text();
+
+console.log("🔥 BACKEND CEVABI:", text);
+
+let data;
+
+try {
+  data = JSON.parse(text);
+} catch {
+  throw new Error(
+    `Backend JSON yerine şunu gönderdi: ${text.substring(0, 300)}`
+  );
+}
 
       if (!res.ok) {
         throw new Error(

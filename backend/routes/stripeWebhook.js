@@ -8,7 +8,6 @@ const router = Router();
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-// RESEND_API_KEY yoksa server çökmeyecek
 const resend = process.env.RESEND_API_KEY
   ? new Resend(process.env.RESEND_API_KEY)
   : null;
@@ -73,7 +72,9 @@ router.post("/", async (req, res) => {
       });
     }
 
-    console.log("✅ ÖDEME STRIPE TARAFINDAN ONAYLANDI");
+    console.log(
+      "✅ ÖDEME STRIPE TARAFINDAN ONAYLANDI"
+    );
 
     // ==========================================
     // CUSTOMER
@@ -85,42 +86,16 @@ router.post("/", async (req, res) => {
       session.metadata?.email ||
       "";
 
-    const firstName =
-      session.metadata?.firstName ||
-      session.customer_details?.name?.split(" ")[0] ||
+    const customerName =
+      session.customer_details?.name ||
+      `${session.metadata?.firstName || ""} ${
+        session.metadata?.lastName || ""
+      }`.trim() ||
       "Client";
 
-    const lastName =
-      session.metadata?.lastName ||
-      session.customer_details?.name
-        ?.split(" ")
-        .slice(1)
-        .join(" ") ||
-      "Client";
-
-    const address =
-      session.metadata?.address ||
-      session.customer_details?.address?.line1 ||
-      "Non renseignée";
-
-    const postalCode =
-      session.metadata?.postalCode ||
-      session.customer_details?.address?.postal_code ||
-      "00000";
-
-    const city =
-      session.metadata?.city ||
-      session.customer_details?.address?.city ||
-      "Non renseignée";
-
-    const country =
-      session.metadata?.country ||
-      session.customer_details?.address?.country ||
-      "France";
-
-    const amount = Number(
-      ((session.amount_total || 0) / 100).toFixed(2)
-    );
+    const amount = (
+      (session.amount_total || 0) / 100
+    ).toFixed(2);
 
     const currency =
       session.currency?.toUpperCase() || "EUR";
@@ -133,9 +108,6 @@ router.post("/", async (req, res) => {
         ? "Abonnement annuel Atlasia Kids"
         : session.metadata?.plan || "";
 
-    const customerName =
-      `${firstName} ${lastName}`.trim();
-
     console.log("👤 Client:", customerName);
     console.log("📧 Client email:", customerEmail);
     console.log("💰 Montant:", amount, currency);
@@ -143,95 +115,93 @@ router.post("/", async (req, res) => {
     // ==========================================
     // MONGODB - ÖDEMEYİ KAYDET
     // ==========================================
-// ==========================================
-// MONGODB - ÖDEMEYİ KAYDET
-// ==========================================
 
-try {
-  const existingOrder = await Order.findOne({
-    stripeSessionId: session.id,
-  });
+    try {
+      const existingOrder = await Order.findOne({
+        stripeSessionId: session.id,
+      });
 
-  if (existingOrder) {
-    console.log(
-      "⚠️ Bu Stripe session zaten MongoDB'de kayıtlı:",
-      session.id
-    );
-  } else {
-    const newOrder = await Order.create({
-      stripeSessionId: session.id,
+      if (existingOrder) {
+        console.log(
+          "⚠️ Bu Stripe session zaten MongoDB'de kayıtlı:",
+          session.id
+        );
+      } else {
+        const newOrder = await Order.create({
+          stripeSessionId: session.id,
 
-      customer: {
-        email: customerEmail,
-        firstName:
-          session.metadata?.firstName ||
-          customerName.split(" ")[0] ||
-          "Client",
+          customer: {
+            email: customerEmail,
 
-        lastName:
-          session.metadata?.lastName ||
-          customerName.split(" ").slice(1).join(" ") ||
-          "Client",
+            firstName:
+              session.metadata?.firstName ||
+              customerName.split(" ")[0] ||
+              "Client",
 
-        address:
-          session.metadata?.address ||
-          session.customer_details?.address?.line1 ||
-          "Non renseignée",
+            lastName:
+              session.metadata?.lastName ||
+              customerName.split(" ").slice(1).join(" ") ||
+              "Client",
 
-        postalCode:
-          session.metadata?.postalCode ||
-          session.customer_details?.address?.postal_code ||
-          "00000",
+            address:
+              session.metadata?.address ||
+              session.customer_details?.address?.line1 ||
+              "Non renseignée",
 
-        city:
-          session.metadata?.city ||
-          session.customer_details?.address?.city ||
-          "Non renseignée",
+            postalCode:
+              session.metadata?.postalCode ||
+              session.customer_details?.address?.postal_code ||
+              "00000",
 
-        country:
-          session.metadata?.country ||
-          session.customer_details?.address?.country ||
-          "France",
-      },
+            city:
+              session.metadata?.city ||
+              session.customer_details?.address?.city ||
+              "Non renseignée",
 
-      items: [],
+            country:
+              session.metadata?.country ||
+              session.customer_details?.address?.country ||
+              "France",
+          },
 
-      subtotal: Number(amount),
+          items: [],
 
-      total: Number(amount),
+          subtotal: Number(amount),
 
-      paymentMethod: "card",
+          total: Number(amount),
 
-      status: "paid",
-    });
+          paymentMethod: "card",
 
-    console.log("=================================");
-    console.log("✅ ÖDEME MONGODB'YE KAYDEDİLDİ");
-    console.log("MongoDB Order ID:", newOrder._id);
-    console.log("Stripe Session ID:", session.id);
-    console.log("Status:", newOrder.status);
-    console.log("Total:", newOrder.total);
-    console.log("=================================");
-  }
-} catch (dbError) {
-  console.error(
-    "❌ MONGODB ÖDEME KAYIT HATASI:",
-    dbError.message
-  );
-}
+          status: "paid",
+        });
+
+        console.log("=================================");
+        console.log("✅ ÖDEME MONGODB'YE KAYDEDİLDİ");
+        console.log("MongoDB Order ID:", newOrder._id);
+        console.log("Stripe Session ID:", session.id);
+        console.log("Status:", newOrder.status);
+        console.log("Total:", newOrder.total);
+        console.log("=================================");
+      }
+    } catch (dbError) {
+      console.error(
+        "❌ MONGODB ÖDEME KAYIT HATASI:",
+        dbError.message
+      );
+    }
 
     // ==========================================
     // EMAIL
     // ==========================================
-
-    const fromEmail =
-      process.env.EMAIL_FROM || "onboarding@resend.dev";
 
     if (!resend) {
       console.log(
         "⚠️ RESEND_API_KEY bulunamadı. Email gönderilmedi."
       );
     } else {
+      const fromEmail =
+        process.env.EMAIL_FROM ||
+        "onboarding@resend.dev";
 
       // ==========================================
       // ATLASIA EMAIL
@@ -243,10 +213,16 @@ try {
         const { data, error } =
           await resend.emails.send({
             from: `Atlasia Kids <${fromEmail}>`,
+
             to: [process.env.EMAIL_USER],
-            subject: "💰 Nouveau paiement Atlasia Kids",
+
+            subject:
+              "💰 Nouveau paiement Atlasia Kids",
+
             text: `
 NOUVEAU PAIEMENT REÇU
+
+=====================
 
 Client :
 ${customerName}
@@ -269,6 +245,8 @@ Stripe - paiement unique
 Session Stripe :
 ${session.id}
 
+=====================
+
 Paiement confirmé par Stripe.
             `,
           });
@@ -279,7 +257,6 @@ Paiement confirmé par Stripe.
 
         console.log("✅ EMAIL ATLASIA ENVOYÉ");
         console.log("📨 Resend ID:", data?.id);
-
       } catch (err) {
         console.error(
           "❌ ERREUR EMAIL ATLASIA:",
@@ -292,26 +269,33 @@ Paiement confirmé par Stripe.
       // ==========================================
 
       if (customerEmail) {
-        console.log("📨 Email client gönderiliyor...");
+        console.log(
+          "📨 Email client gönderiliyor..."
+        );
 
         try {
           const { data, error } =
             await resend.emails.send({
               from: `Atlasia Kids <${fromEmail}>`,
+
               to: [customerEmail],
+
               subject:
                 "✅ Confirmation de votre paiement - Atlasia Kids",
+
               text: `
 Bonjour ${customerName},
 
 Nous vous confirmons que votre paiement a bien été reçu.
 
 Montant payé :
+
 ${amount} ${currency}
 
 ${
   plan
     ? `Plan :
+
 ${plan}
 
 `
@@ -319,6 +303,7 @@ ${plan}
 }
 
 Paiement :
+
 Paiement unique par carte via Stripe.
 
 Votre paiement a été confirmé avec succès.
@@ -342,13 +327,16 @@ L'équipe Atlasia Kids
             "📨 Resend ID:",
             data?.id
           );
-
         } catch (err) {
           console.error(
             "❌ ERREUR EMAIL CLIENT:",
             err.message
           );
         }
+      } else {
+        console.log(
+          "⚠️ AUCUN EMAIL CLIENT"
+        );
       }
     }
   }
@@ -358,5 +346,5 @@ L'équipe Atlasia Kids
   });
 });
 
-
 export default router;
+
