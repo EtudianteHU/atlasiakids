@@ -30,8 +30,6 @@ export default function Testimonial() {
 
   const isMobile = screenWidth <= 767;
   const isTablet = screenWidth >= 768 && screenWidth <= 1024;
-
-  const visibleCount = isMobile ? 1 : isTablet ? 2 : 3;
   const gap = isMobile ? 12 : isTablet ? 16 : 24;
 
   const cardWidth = isMobile
@@ -117,7 +115,7 @@ return (
           }}
         >
           <div className="tsHeader">
-            <img src={item.logo} className="tsLogo" />
+         <img src={item.logo} className="tsLogo" alt={`${item.name} logo`} />
 
             <div className="tsHeadText">
               <h3 className="tsName">{item.name}</h3>
