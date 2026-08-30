@@ -201,7 +201,7 @@ router.post("/", async (req, res) => {
     } else {
       const fromEmail =
         process.env.EMAIL_FROM ||
-        "onboarding@resend.dev";
+       "noreply@atlasiakids.fr";
 
       // ==========================================
       // ATLASIA EMAIL
