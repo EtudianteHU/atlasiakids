@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Panier.css";
 
@@ -27,31 +27,9 @@ const getId = (item) => item?.productId || item?._id || item?.number;
 
 // ---------------- COMPONENT ----------------
 export default function Panier() {
+
   const navigate = useNavigate();
-
   const [cart, setCart] = useState([]);
-const [showNote, setShowNote] = useState(false);
-  const [note, setNote] = useState("");
-
-  // Load cart
- useEffect(() => {
-  const data = readCart();
-
-  setCart(data);
-
-  console.log("CART RAW:", data);
-  console.log("CART LENGTH:", data.length);
-
-  const savedNote = localStorage.getItem("cart_note");
-  if (savedNote) {
-    setNote(savedNote);
-    setShowNote(true);
-  }
-}, []);
-  // Save note
-  useEffect(() => {
-    localStorage.setItem("cart_note", note);
-  }, [note]);
 
   // ---------------- SUBTOTAL ----------------
   const subtotal = useMemo(() => {
@@ -92,10 +70,8 @@ const [showNote, setShowNote] = useState(false);
   const clearCart = () => {
     writeCart([]);
       window.dispatchEvent(new Event("cartUpdated"));
-    localStorage.removeItem("cart_note");
     setCart([]);
-    setNote("");
-    setShowNote(false);
+   
   };
 
   // ---------------- REFRESH ----------------
