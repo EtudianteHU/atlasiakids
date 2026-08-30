@@ -30,7 +30,7 @@ export default function Panier() {
   const navigate = useNavigate();
 
   const [cart, setCart] = useState([]);
-  const [showNote, setShowNote] = useState(false);
+const [showNote, setShowNote] = useState(false);
   const [note, setNote] = useState("");
 
   // Load cart
