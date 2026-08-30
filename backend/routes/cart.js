@@ -4,7 +4,6 @@ import mongoose from "mongoose";
 import Issue from "../models/Issue.js";
 
 const router = Router();
-console.log("STRIPE KEY:", process.env.STRIPE_SECRET_KEY); // 👈 AJOUTE ICI
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
