@@ -348,13 +348,19 @@ router.post("/create-session", async (req, res) => {
     // STRIPE PAYMENT
     // ==================================================
 
-    const session =
-      await stripe.checkout.sessions.create({
-        mode: "payment",
+  const session =
+  await stripe.checkout.sessions.create({
+    mode: "payment",
 
-        payment_method_types: [
-          "card",
-        ],
+    payment_method_types: [
+      "card",
+    ],
+
+    payment_method_options: {
+      card: {
+        request_three_d_secure: "any",
+      },
+    },
 
         line_items,
 
