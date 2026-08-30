@@ -122,7 +122,13 @@ router.post("/create-session", async (req, res) => {
           payment_method_types: [
             "card",
           ],
-
+          payment_intent_data: {
+  payment_method_options: {
+    card: {
+      request_three_d_secure: "any",
+    },
+  },
+},
           line_items: [
             {
               price_data: {
