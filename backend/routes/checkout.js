@@ -125,7 +125,7 @@ router.post("/create-session", async (req, res) => {
           payment_intent_data: {
   payment_method_options: {
     card: {
-      request_three_d_secure: "any",
+      request_three_d_secure:"challenge",
     },
   },
 },
@@ -358,7 +358,7 @@ router.post("/create-session", async (req, res) => {
 
     payment_method_options: {
       card: {
-        request_three_d_secure: "any",
+        request_three_d_secure:  "challenge",
       },
     },
 
