@@ -5,10 +5,10 @@ import "./AcheterNumero.css";
 // -------------------- COMPONENT --------------------
 export default function AcheterNumero() {
   const [issues, setIssues] = useState([]);
-  const navigate = useNavigate(); // ✅ ICI
+  const navigate = useNavigate(); 
   // ---------------- LOAD DATA FROM MONGODB ----------------
 useEffect(() => {
-fetch("https://atlasiakids-backend.onrender.com/api/issues")
+  fetch("https://atlasiakids-backend.onrender.com/api/issues")
     .then((res) => res.json())
     .then((data) => {
       console.log("ALL ISSUES:", data); // 👈 voir tout

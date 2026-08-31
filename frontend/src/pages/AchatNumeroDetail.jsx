@@ -21,7 +21,7 @@ export default function AchatNumeroDetail() {
 
   // 🔥 FETCH MONGODB
   useEffect(() => {
-    fetch("http://localhost:5000/api/issues")
+ fetch("https://atlasiakids-backend.onrender.com/api/issues")
       .then((res) => res.json())
       .then((data) => {
         const found = data.find(
