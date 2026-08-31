@@ -20,7 +20,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 10000;
+  z-index:99999;
 }
 .hero-magazine-container {
   position: relative;
@@ -261,9 +261,13 @@
 
 @media (max-width: 768px) {
   .hero-magazine {
-    padding: 70px 16px 50px;
+     min-height: 100vh;
+    padding: 100px 16px 50px;
   }
 
+  .hero-magazine-navbar {
+    z-index: 99999;
+  }
   .hero-magazine-text {
     margin: 0 auto 50px;
   }
@@ -384,11 +388,3 @@
     bottom:-25px;
   }
 }
-@media (max-width: 767px) {
-     .hero-card-content {
-    bottom: 30px;
-  }
-    .hero-cta-btn {
-    bottom:-50px;
-  }
-   }
