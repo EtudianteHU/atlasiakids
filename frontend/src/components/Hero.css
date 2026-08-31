@@ -125,9 +125,9 @@ font-weight: 900;
 
 @media (max-width: 768px) {
   .hero {
-    min-height: 100vh;
+  
     padding: 100px 20px 50px;
-    background-size: cover;
+  
     background-position: center top;
     background-repeat: no-repeat;
   }
