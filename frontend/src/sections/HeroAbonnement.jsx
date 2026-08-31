@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./HeroAbonnement.css"
-
 export default function HeroAbonnement({
   buttonText = "Abonnez-vous maintenant",
   title = "Abonnez-vous maintenant",
@@ -16,6 +15,8 @@ export default function HeroAbonnement({
 
   return (
     <section className="heroSimple">
+        <div className="heroSimple-navbar">
+    </div>
       <div className="heroSimple-shapes">
   <span className="shape circle s1"></span>
   <span className="shape circle s2"></span>

@@ -1,15 +1,11 @@
 import React from "react";
 import "./HeroMagazine.css";
-import Navbar from "../components/Navbar";
 import coverLeftImg from "../images/page-de-garde-1.png";
 import coverRightImg from "../images/page-de-garde-2.png";
 export default function HeroMagazine({ onLeftClick, onRightClick, backgroundImage,className = ""
  }){
   return (
   <section className={`hero-magazine ${className}`}>
-    <div className="hero-magazine-navbar">
-    <Navbar />
-  </div>
       <div className="hero-magazine-container">
         <div className="hero-magazine-text">
           <h1 className="hero-title">
