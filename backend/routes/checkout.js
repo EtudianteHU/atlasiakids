@@ -174,6 +174,10 @@ router.post("/create-session", async (req, res) => {
 
             lastName:
               customer.lastName || "",
+                phone:
+              customer.phone || "",
+company:
+  customer.company || "",
 
             address:
               customer.address || "",
@@ -362,10 +366,10 @@ router.post("/create-session", async (req, res) => {
       },
     },
 
-        line_items,
+    line_items,
 
-        customer_email:
-          email || undefined,
+customer_email:
+  email || undefined,
 
         // ==================================================
         // URLS
@@ -391,9 +395,12 @@ router.post("/create-session", async (req, res) => {
 
           lastName:
             customer.lastName || "",
-
+company:
+  customer.company || "",
           address:
             customer.address || "",
+            phone:
+  customer.phone || "",
 
           city:
             customer.city || "",

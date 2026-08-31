@@ -75,24 +75,50 @@ router.post("/", async (req, res) => {
     console.log(
       "✅ ÖDEME STRIPE TARAFINDAN ONAYLANDI"
     );
+  
+const metadata = session.metadata || {};
 
-    // ==========================================
-    // CUSTOMER
-    // ==========================================
+const customerEmail =
+  metadata.email ||
+  session.customer_details?.email ||
+  session.customer_email ||
+  "";
+const customerName =
+  `${metadata.firstName || ""} ${metadata.lastName || ""}`.trim() ||
+  session.customer_details?.name ||
+  "Client";
+  const customerCompany =
+  metadata.company || "";
 
-    const customerEmail =
-      session.customer_email ||
-      session.customer_details?.email ||
-      session.metadata?.email ||
-      "";
+const customerPhone =
+  metadata.phone ||
+  session.customer_details?.phone ||
+  "Non renseigné";
 
-    const customerName =
-      session.customer_details?.name ||
-      `${session.metadata?.firstName || ""} ${
-        session.metadata?.lastName || ""
-      }`.trim() ||
-      "Client";
+const customerAddress =
+  metadata.address ||
+  session.customer_details?.address?.line1 ||
+  "Non renseignée";
 
+const customerAddress2 =
+  metadata.address2 ||
+  session.customer_details?.address?.line2 ||
+  "";
+
+const customerPostalCode =
+  metadata.postalCode ||
+  session.customer_details?.address?.postal_code ||
+  "Non renseigné";
+
+const customerCity =
+  metadata.city ||
+  session.customer_details?.address?.city ||
+  "Non renseignée";
+
+const customerCountry =
+  metadata.country ||
+  session.customer_details?.address?.country ||
+  "France";
     const amount = (
       (session.amount_total || 0) / 100
     ).toFixed(2);
@@ -108,9 +134,13 @@ router.post("/", async (req, res) => {
         ? "Abonnement annuel Atlasia Kids"
         : session.metadata?.plan || "";
 
-    console.log("👤 Client:", customerName);
-    console.log("📧 Client email:", customerEmail);
-    console.log("💰 Montant:", amount, currency);
+  console.log("📞 Téléphone:", customerPhone);
+console.log("🏠 Adresse:", customerAddress);
+console.log("📮 Code postal:", customerPostalCode);
+console.log("🏙️ Ville:", customerCity);
+console.log("🌍 Pays:", customerCountry);
+
+console.log("📦 STRIPE METADATA:", session.metadata);
 
     // ==========================================
     // MONGODB - ÖDEMEYİ KAYDET
@@ -129,40 +159,30 @@ router.post("/", async (req, res) => {
       } else {
         const newOrder = await Order.create({
           stripeSessionId: session.id,
+customer: {
+  email: customerEmail,
 
-          customer: {
-            email: customerEmail,
+  firstName:
+    session.metadata?.firstName ||
+    customerName.split(" ")[0] ||
+    "Client",
 
-            firstName:
-              session.metadata?.firstName ||
-              customerName.split(" ")[0] ||
-              "Client",
+  lastName:
+    session.metadata?.lastName ||
+    customerName.split(" ").slice(1).join(" ") ||
+    "Client",
+  company: customerCompany,
+  address: customerAddress,
 
-            lastName:
-              session.metadata?.lastName ||
-              customerName.split(" ").slice(1).join(" ") ||
-              "Client",
+address2: customerAddress2,
+  postalCode: customerPostalCode,
 
-            address:
-              session.metadata?.address ||
-              session.customer_details?.address?.line1 ||
-              "Non renseignée",
+  city: customerCity,
 
-            postalCode:
-              session.metadata?.postalCode ||
-              session.customer_details?.address?.postal_code ||
-              "00000",
+  country: customerCountry,
 
-            city:
-              session.metadata?.city ||
-              session.customer_details?.address?.city ||
-              "Non renseignée",
-
-            country:
-              session.metadata?.country ||
-              session.customer_details?.address?.country ||
-              "France",
-          },
+  phone: customerPhone,
+},
 
           items: [],
 
@@ -214,7 +234,7 @@ router.post("/", async (req, res) => {
           await resend.emails.send({
             from: `Atlasia Kids <${fromEmail}>`,
 
-            to: [process.env.EMAIL_USER],
+          to: ["atlasiakidsfr@gmail.com"],
 
             subject:
               "💰 Nouveau paiement Atlasia Kids",
@@ -226,9 +246,26 @@ NOUVEAU PAIEMENT REÇU
 
 Client :
 ${customerName}
-
+Société :
+${customerCompany || "Non renseignée"}
 Email :
 ${customerEmail || "Non renseigné"}
+
+Téléphone :
+${customerPhone}
+
+Adresse :
+${customerAddress}
+${customerAddress2 ? customerAddress2 + "\n" : ""}
+
+Code postal :
+${customerPostalCode}
+
+Ville :
+${customerCity}
+
+Pays :
+${customerCountry}
 
 Montant :
 ${amount} ${currency}
