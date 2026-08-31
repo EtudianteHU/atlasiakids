@@ -34,13 +34,6 @@ export const teamData = [
     description:
       "Passionnée par les histoires et les univers créatifs, il apporte douceur, imagination et sens du détail à chaque numéro."
   },
-  {
-    id: 6,
-    name: "Vera JANTZEM",
-    image: "/images/Vera.jpg",
-    description:
-      "Réfléchie et organisée, elle aide à structurer les idées et à donner vie à des contenus riches, ludiques et éducatifs."
-  },
       {
     id: 7,
     name: "Fadime ORHAN",
