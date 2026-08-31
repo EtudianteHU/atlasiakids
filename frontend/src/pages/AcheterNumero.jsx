@@ -8,6 +8,8 @@ export default function AcheterNumero() {
   const navigate = useNavigate(); 
   // ---------------- LOAD DATA FROM MONGODB ----------------
 useEffect(() => {
+
+  console.log("🔥 ACHETER NUMERO COMPONENT ÇALIŞIYOR");
   fetch("https://atlasiakids-backend.onrender.com/api/issues")
     .then((res) => res.json())
     .then((data) => {
