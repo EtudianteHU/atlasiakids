@@ -33,6 +33,7 @@ export default function CheckoutPage() {
   const [cart, setCart] = useState([]);
 
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [country, setCountry] = useState("France");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -179,6 +180,7 @@ export default function CheckoutPage() {
                 firstName,
                 lastName,
                 company,
+                 phone,
                 address,
                 postalCode,
                 city,
@@ -262,6 +264,7 @@ const items = safeCart.map((item) => {
               firstName,
               lastName,
               company,
+               phone,
               address,
               postalCode,
               city,
@@ -364,7 +367,17 @@ try {
                   setEmail(e.target.value)
                 }
               />
+              <label className="ckLabel">
+  Téléphone
+</label>
 
+<input
+  className="ckInput"
+  type="tel"
+  placeholder="Téléphone"
+  value={phone}
+  onChange={(e) => setPhone(e.target.value)}
+/>
               <label className="ckCheckbox">
                 <input
                   type="checkbox"
