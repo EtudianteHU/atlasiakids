@@ -39,7 +39,7 @@ export const teamData = [
     name: "Fadime ORHAN",
     image: "/images/Fadime-SOLMAZ.jpg",
     description:
-      "Il donne à Atlasia Kids son univers visuel unique, chaleureux et vivant, où chaque détail raconte une histoire."
+      "Elle donne à Atlasia Kids son univers visuel unique, chaleureux et vivant, où chaque détail raconte une histoire."
   },
     {
     id: 8,
