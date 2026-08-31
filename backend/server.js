@@ -27,6 +27,8 @@ app.use(
     origin: [
       "http://localhost:3000",
       "http://localhost:5173",
+      "https://atlasiakids.fr",
+      "https://www.atlasiakids.fr",
       "https://atlasiakids.com",
       "https://www.atlasiakids.com",
     ],
