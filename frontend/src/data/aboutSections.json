@@ -43,7 +43,7 @@
     "Nous espérons qu'en ouvrant notre magazine, chaque enfant se sentira comme chez lui."
   ],
   "buttonText": "Abonnez-vous maintenant",
-  "buttonLink": "https://atlasiakids.com/subscribe/",
+  "buttonLink": "/abonnement",
   "image": "/images/AU1.png",
   "backgroundImage": "/images/pattern-2.png",
   "backgroundColor": "white",
