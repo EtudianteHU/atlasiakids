@@ -41,12 +41,12 @@ router.post("/", async (req, res, next) => {
           rejectUnauthorized: false,
         },
       });
-console.log("TO (admin):", process.env.EMAIL_USER);
-console.log("FROM (client):", email);
+console.log("EMAIL_USER:", process.env.EMAIL_USER);
+console.log("CONTACT_EMAIL:", process.env.CONTACT_EMAIL);
       const info = await transporter.sendMail({
         from: `"Atlasia Kids" <${process.env.EMAIL_USER}>`,
         replyTo: email,
-        to: process.env.EMAIL_USER,
+      to: process.env.CONTACT_EMAIL,
         subject: sujet || "Message du site Atlasia",
         html: `
           <h2>Nouveau message depuis le formulaire de contact</h2>
