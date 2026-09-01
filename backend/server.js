@@ -38,7 +38,7 @@ app.use(
       "https://atlasiakids.com",
       "https://www.atlasiakids.com",
     ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
+ methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
   })
 );
