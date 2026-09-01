@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Hero.css";
-import Navbar from "../components/Navbar"
+import "./Hero.css"
 const heroShapeUrl = "https://atlasiakids.com/wp-content/uploads/2024/08/hero-shape.png";
 const heroBoyUrl = "https://atlasiakids.com/wp-content/uploads/2025/05/hero-boy-2.png";
 
@@ -10,7 +9,6 @@ export default function Hero() {
     <section className="hero">
      
   <div className="hero-navbar">
-    <Navbar />
   </div>
       <div className="hero-container">
         <div className="hero-text">
