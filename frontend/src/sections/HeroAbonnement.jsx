@@ -1,16 +1,15 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import "./HeroAbonnement.css"
 export default function HeroAbonnement({
   buttonText = "Abonnez-vous maintenant",
   title = "Abonnez-vous maintenant",
   description = "Recevez chaque mois une dose de joie, d'apprentissage et de divertissement inspirant directement chez vous.",
-  buttonTo = "/",
+  onClick,
 }) {
-  const navigate = useNavigate();
-
   const handleSubscribe = () => {
-    navigate(buttonTo);
+    if (onClick) {
+      onClick();
+    }
   };
 
   return (

@@ -49,7 +49,7 @@ export default function Abonnement() {
   title="Abonnez-vous maintenant"
   highlight="Maison des enfants Atlasia !"
   description="Recevez chaque mois une dose de joie, d’apprentissage et de divertissement inspirant, directement chez vous. Chaque numéro d’Atlasia Kids regorge d’histoires captivantes, de jeux, de bandes dessinées et bien plus encore pour les enfants curieux."
-  buttonTo="/checkout"
+ onClick={() => handleCheckout("annuel")}
 />
 
       <PricingCards SN1={SN1} SN2={SN2} onClick={handleCheckout} />
