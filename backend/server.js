@@ -18,7 +18,13 @@ import stripeWebhookRouter from "./routes/stripeWebhook.js";
 dns.setDefaultResultOrder("ipv4first");
 
 const app = express();
-
+// --------------------
+// DEBUG DES REQUÊTES
+// --------------------
+app.use((req, res, next) => {
+  console.log("➡️ REQUEST :", req.method, req.originalUrl);
+  next();
+});
 // --------------------
 // CORS (IMPORTANT)
 // --------------------
