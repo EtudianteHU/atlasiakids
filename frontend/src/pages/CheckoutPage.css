@@ -399,22 +399,41 @@
     grid-template-columns: 1fr;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
+  .ckPage {
+    width: 100%;
+    min-height: 0;
+    height: auto;
+    overflow: visible;
+  }
+
   .ckShell {
-    grid-template-columns: 1fr;
-    min-height: auto;
+    display: block;
+    width: 100%;
+    min-height: 0;
+    height: auto;
   }
 
   .ckLeft {
+    width: 100%;
     margin-top: 0;
+    padding: 22px 14px 34px;
     height: auto;
+    min-height: 0;
     overflow: visible;
+    box-sizing: border-box;
   }
 
   .ckRight {
     position: relative;
     top: auto;
+    right: auto;
+    bottom: auto;
+    width: 100%;
     height: auto;
+    min-height: 0;
+    overflow: visible;
+    box-sizing: border-box;
   }
 
   .ckInput,
@@ -422,5 +441,16 @@
   .ckPage textarea,
   .ckPage select {
     font-size: 16px !important;
+    transform: none !important;
+  }
+
+  .ckGrid2 {
+    grid-template-columns: 1fr;
+  }
+
+  html,
+  body {
+    height: auto;
+    min-height: 100%;
   }
 }
