@@ -28,18 +28,21 @@ router.post("/", async (req, res, next) => {
       console.warn("DB write failed (contact):", dbErr.message);
     }
 
-    try {
-      console.log("EMAIL_PASS exists?", !!process.env.EMAIL_PASS);
+  try {
+  console.log("EMAIL_PASS exists?", !!process.env.EMAIL_PASS);
+  console.log("EMAIL_USER:", process.env.EMAIL_USER);
+  console.log("CONTACT_EMAIL:", process.env.CONTACT_EMAIL);
 
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 587,
-  secure: false,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
+  const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false,
+    requireTLS: true,
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+  });
 console.log("EMAIL_USER:", process.env.EMAIL_USER);
 console.log("CONTACT_EMAIL:", process.env.CONTACT_EMAIL);
       const info = await transporter.sendMail({
