@@ -400,6 +400,14 @@
   }
 }
 @media (max-width: 767px) {
+ @media (max-width: 767px) {
+  .ckPage,
+  .ckShell,
+  .ckLeft,
+  .ckRight {
+    overflow-anchor: none;
+  }
+
   .ckPage {
     width: 100%;
     min-height: 0;
@@ -447,10 +455,5 @@
   .ckGrid2 {
     grid-template-columns: 1fr;
   }
-
-  html,
-  body {
-    height: auto;
-    min-height: 100%;
-  }
+}
 }
