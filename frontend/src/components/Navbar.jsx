@@ -23,22 +23,22 @@ export default function Navbar() {
     setShowAbout(false);
   }, [location.pathname]);
 
-  // Détecter le scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
-    };
+// Détecter le scroll
+useEffect(() => {
+  const handleScroll = () => {
+    console.log("SCROLL:", window.scrollY);
 
-    window.addEventListener("scroll", handleScroll);
+    setIsScrolled(window.scrollY > 50);
+  };
 
-    // Vérifier également la position au chargement
-    handleScroll();
+  window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  handleScroll();
 
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
+}, []);
   // Fermer le dropdown lorsqu'on clique ailleurs
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -68,9 +68,9 @@ export default function Navbar() {
   const isAboutActive = aboutPaths.includes(location.pathname);
 
   return (
-    <header
-      className={`navbar ${isScrolled ? "navbar-scrolled" : ""}`}
-    >
+  <header
+  className={`navbar ${isScrolled ? "navbar-scrolled" : ""}`}
+>
       <div className="navbar-container">
 
         {/* Logo */}
