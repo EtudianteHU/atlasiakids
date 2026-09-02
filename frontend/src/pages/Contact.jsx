@@ -97,7 +97,7 @@ export default function Contact() {
                 <Mail size={22} className="infoIcon" />
                 <div>
                   <h4>Courriel :</h4>
-                  <p>atlasiakidsfr</p>
+                  <p>atlasiakidsfr@gmail.com</p>
                 </div>
               </div>
             </div>

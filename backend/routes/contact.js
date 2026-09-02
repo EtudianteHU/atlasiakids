@@ -59,7 +59,9 @@ console.log("CONTACT_EMAIL:", process.env.CONTACT_EMAIL);
       console.log("Email envoyé :", info.response);
       emailSent = true;
     } catch (emailErr) {
-      console.error("Email non envoyé :", emailErr);
+  console.error("EMAIL ERROR MESSAGE:", emailErr.message);
+  console.error("EMAIL ERROR CODE:", emailErr.code);
+  console.error("EMAIL ERROR RESPONSE:", emailErr.response);
     }
 
     if (savedToDb && emailSent) {
