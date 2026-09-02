@@ -32,7 +32,7 @@ export default function Contact() {
       });
 
       const data = await res.json();
-
+console.log("CONTACT RESPONSE:", res.status, data);
   if (data.success) {
   setStatus(data.message || "Message envoyé ✅");
 
