@@ -2,7 +2,7 @@ import React from "react";
 import "./FooterBuyer.css";
 import { FaHome, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import logo from "../images/logo-t.png";
+
 
 export default function FooterBuyer() {
   return (
@@ -12,7 +12,11 @@ export default function FooterBuyer() {
 
         {/* LOGO */}
         <div className="footer-col footer-brand">
-          <img src={logo} alt="Atlasia Kids" className="footer-logo" />
+        <img
+  src="https://atlasiakids.com/wp-content/uploads/2025/04/logo-new.png"
+  alt="Atlasia Kids"
+  className="footer-logo"
+/>
         </div>
 
         {/* LIENS RAPIDES */}
