@@ -43,7 +43,10 @@ useEffect(() => {
   return () => window.removeEventListener("mousemove", move);
 }, []);
 
-
+useEffect(() => {
+  fetch("https://atlasiakids-backend.onrender.com/")
+    .catch(() => {});
+}, []);
   return (
     <Router>
 
