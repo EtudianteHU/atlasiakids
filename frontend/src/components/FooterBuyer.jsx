@@ -19,7 +19,7 @@ export default function FooterBuyer() {
         <div className="footer-col">
           <h3 className="footer-title">Liens rapides</h3>
           <ul className="footer-links">
-            <li><Link to="/a-propos">À propos de nous</Link></li>
+            <li><Link to="/about">À propos de nous</Link></li>
             <li><Link to="/abonnement">Abonnez-vous maintenant</Link></li>
           </ul>
         </div>
