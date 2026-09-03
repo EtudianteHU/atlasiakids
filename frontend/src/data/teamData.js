@@ -56,21 +56,21 @@ export const teamData = [
       "Avec douceur et créativité, elle façonne des contenus inspirants qui parlent au cœur des enfants et des familles."
   },
    {
-    id: 9,
+    id: 10,
     name: "Hayriye SOLMAZ",
     image: "/images/Hayriye-SOLMAZ.jpg",
     description:
       "Réfléchie et organisée, elle aide à structurer les idées et à donner vie à des contenus riches, ludiques et éducatifs."
   },
    {
-    id: 10,
+    id: 11,
     name: "Marion DEMIREL",
     image: "/images/Marion-DEMIREL.jpg",
     description:
       "Visionnaire et passionné, elle guide la ligne éditoriale avec exigence, sensibilité et amour du détail."
   },
    {
-    id: 11,
+    id: 12,
     name: "Vera JANTZEM",
     image: "/images/Vera.jpg",
     description:
