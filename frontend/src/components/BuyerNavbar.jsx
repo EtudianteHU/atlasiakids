@@ -3,7 +3,6 @@ import "./BuyerNavbar.css";
 import MiniCart from "../components/MiniCart";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import logo from "../images/logo-t.png"; // adapte le chemin
 
 export default function BuyerNavbar() {
   const navigate = useNavigate();
@@ -33,7 +32,11 @@ export default function BuyerNavbar() {
             onClick={() => navigate("/")}
             style={{ cursor: "pointer" }}
           >
-            <img src={logo} alt="Atlasia Kids" className="buyerNav__logoImg" />
+         <img
+  src="https://atlasiakids.com/wp-content/uploads/2025/04/logo-new.png"
+  alt="Atlasia Kids"
+  className="buyerNav__logoImg"
+/>
           </div>
         </div>
 
