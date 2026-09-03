@@ -55,13 +55,6 @@ export const teamData = [
     description:
       "Avec douceur et créativité, elle façonne des contenus inspirants qui parlent au cœur des enfants et des familles."
   },
- {
-    id: 9,
-    name: "Vera JANTZEM",
-    image: "/images/Vera.jpg",
-    description:
-      "Avec douceur et créativité, elle façonne des contenus inspirants qui parlent au cœur des enfants et des familles."
-  },
    {
     id: 9,
     name: "Hayriye SOLMAZ",
