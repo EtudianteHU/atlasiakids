@@ -125,9 +125,7 @@ font-weight: 900;
 
 @media (max-width: 768px) {
   .hero {
-  
     padding: 100px 20px 50px;
-  
     background-position: center top;
     background-repeat: no-repeat;
   }
@@ -137,7 +135,7 @@ font-weight: 900;
     top: 0;
     left: 0;
     width: 100%;
-    z-index:  9999999;
+    z-index: 9999999;
   }
 
   .hero-images {
@@ -155,25 +153,43 @@ font-weight: 900;
     z-index: 2;
   }
 
+  /* 🌸 TEXTE TRÈS DOUX */
   .hero-text {
     width: 100%;
     max-width: 100%;
     margin-bottom: 40px;
+
     opacity: 0;
-    transform: translateY(30px);
-    animation: heroTextMobile 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    transform: translateY(10px);
+
+    animation: ultraSoftText 4.5s
+      cubic-bezier(0.16, 1, 0.3, 1)
+      0.4s
+      forwards;
   }
 
-  @keyframes heroTextMobile {
+  @keyframes ultraSoftText {
+
     0% {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(10px);
+    }
+
+    40% {
+      opacity: 0.25;
+      transform: translateY(6px);
+    }
+
+    70% {
+      opacity: 0.65;
+      transform: translateY(3px);
     }
 
     100% {
       opacity: 1;
       transform: translateY(0);
     }
+
   }
 
   .sub-heading {
@@ -193,9 +209,32 @@ font-weight: 900;
     margin-bottom: 20px;
   }
 
+  /* 🌸 BOUTON TRÈS LENT */
   .hero-button {
     padding: 12px 24px;
     font-size: 16px;
+
+    opacity: 0;
+    transform: translateY(5px);
+
+    animation: ultraSoftButton 3s
+      ease-out
+      2.5s
+      forwards;
+  }
+
+  @keyframes ultraSoftButton {
+
+    0% {
+      opacity: 0;
+      transform: translateY(5px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
   }
 
   .nuage-container {
