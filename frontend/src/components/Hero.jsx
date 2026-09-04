@@ -16,7 +16,7 @@ export default function Hero() {
   La revue conçue pour les petits curieux,<span> adoptée par les familles</span>
 </h1>
           <p className="desc">
-          Pour les enfants de 6-11 ans,Atlasia Kids stimulent la creativité,évéillant la curiosité et permet acquerir les valeurs morales.
+          Conçu pour les enfants de 6-11 ans,Atlasia Kids stimule la creativité,évéille la curiosité et les guide pour acquerir les bonnes valeurs morales.
           </p>
           <Link to="/abonnement" className="hero-button">
             Rejoignez l'aventure dès aujourd'hui

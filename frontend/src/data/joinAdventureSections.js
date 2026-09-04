@@ -35,7 +35,7 @@ export const joinAdventureSections = [
     image: apprendre,
     items: [
       "✓ Test",
-      "✓ To-do list",
+      "✓ Carnet de choses à faire",
     ],
   },
   {
@@ -44,7 +44,7 @@ export const joinAdventureSections = [
     title: "Valeurs morales",
     image: foi,
     items: [
-      "✓ Journal de Layla",
+      "✓ Journal de Leila",
       "✓ Histoires pour grandir",
     ],
   },
@@ -56,7 +56,7 @@ export const joinAdventureSections = [
     items: [
       "✓ Les beaux noms d’Allah",
       "✓ La vie du Prophète",
-      "✓ Baccalauréat",
+      "✓ Le petit bac'",
     ],
   },
   {
