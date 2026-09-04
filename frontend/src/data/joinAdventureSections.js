@@ -25,7 +25,7 @@ export const joinAdventureSections = [
     image: decouvert,
     items: [
       "✓ Et si le monde était différent",
-      "✓ As-tu entendu ?",
+      "✓ Le saviez-vous?",
     ],
   },
   {
