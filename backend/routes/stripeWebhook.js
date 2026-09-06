@@ -243,12 +243,16 @@ NOUVEAU PAIEMENT REÇU
 
 Client :
 ${customerName}
+
 Société :
 ${customerCompany || "Non renseignée"}
+
 Email :
 ${customerEmail || "Non renseigné"}
+
 Téléphone :
 ${customerPhone}
+
 Adresse :
 ${customerAddress}
 ${customerAddress2 ? customerAddress2 + "\n" : ""}
