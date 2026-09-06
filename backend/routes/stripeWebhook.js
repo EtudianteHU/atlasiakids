@@ -233,12 +233,9 @@ address2: customerAddress2,
         const { data, error } =
           await resend.emails.send({
             from: `Atlasia Kids <${fromEmail}>`,
-
-          to: ["atlasiakidsfr@gmail.com"],
-
+             to: ["atlasiakidsfr@gmail.com"],
             subject:
               "💰 Nouveau paiement Atlasia Kids",
-
             text: `
 NOUVEAU PAIEMENT REÇU
 
@@ -250,35 +247,25 @@ Société :
 ${customerCompany || "Non renseignée"}
 Email :
 ${customerEmail || "Non renseigné"}
-
 Téléphone :
 ${customerPhone}
-
 Adresse :
 ${customerAddress}
 ${customerAddress2 ? customerAddress2 + "\n" : ""}
-
 Code postal :
 ${customerPostalCode}
-
 Ville :
 ${customerCity}
-
 Pays :
 ${customerCountry}
-
 Montant :
 ${amount} ${currency}
-
 Type :
 ${paymentType}
-
 Plan :
 ${plan || "Produit"}
-
 Paiement :
 Stripe - paiement unique
-
 Session Stripe :
 ${session.id}
 
@@ -322,27 +309,18 @@ Paiement confirmé par Stripe.
 
               text: `
 Bonjour ${customerName},
-
 Nous vous confirmons que votre paiement a bien été reçu.
-
 Montant payé :
-
 ${amount} ${currency}
-
 ${
   plan
     ? `Plan :
-
 ${plan}
-
 `
     : ""
 }
-
 Paiement :
-
 Paiement unique par carte via Stripe.
-
 Votre paiement a été confirmé avec succès.
 
 Merci pour votre confiance.

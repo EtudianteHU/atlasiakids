@@ -29,9 +29,10 @@ router.post("/", async (req, res, next) => {
     }
 
   try {
-  console.log("EMAIL_PASS exists?", !!process.env.EMAIL_PASS);
-  console.log("EMAIL_USER:", process.env.EMAIL_USER);
-  console.log("CONTACT_EMAIL:", process.env.CONTACT_EMAIL);
+  console.log("📧 EMAIL_USER:", process.env.EMAIL_USER);
+  console.log("📧 CONTACT_EMAIL:", process.env.CONTACT_EMAIL);
+  console.log("📧 EMAIL_PASS exists:", !!process.env.EMAIL_PASS);
+
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
