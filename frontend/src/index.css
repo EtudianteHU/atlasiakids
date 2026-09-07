@@ -281,6 +281,10 @@ a {
   .sidebar {
     padding: 16px;
   }
+  .cursor-dot {
+    display: none !important;
+  }
+
 }
 /* =========================
    CUSTOM CURSOR
