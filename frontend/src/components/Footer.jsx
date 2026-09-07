@@ -75,7 +75,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="akCopy">Atlasia Kids © 2025 Tous droits réservés.</div>
+      <div className="akCopy">Atlasia Kids © 2026 Tous droits réservés.</div>
     </footer>
   );
 }
