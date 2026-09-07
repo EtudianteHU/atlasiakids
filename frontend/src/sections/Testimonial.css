@@ -288,7 +288,9 @@ body {
 }
 
 @media (max-width: 767px) {
-
+.testimonialsSection {
+    padding:0px;
+  }
   .tsName {
     font-size: 14px; /* 🔽 plus propre */
     font-weight: 600;
