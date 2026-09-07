@@ -69,11 +69,4 @@ export const teamData = [
     description:
       "Visionnaire et passionné, elle guide la ligne éditoriale avec exigence, sensibilité et amour du détail."
   },
-   {
-    id: 12,
-    name: "Vera JANTZEM",
-    image: "/images/Vera.jpg",
-    description:
-      "Avec douceur et créativité, elle façonne des contenus inspirants qui parlent au cœur des enfants et des familles."
-  },
 ]
