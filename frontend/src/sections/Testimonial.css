@@ -289,7 +289,7 @@ body {
 
 @media (max-width: 767px) {
 .testimonialsSection {
-    padding:0px;
+    padding:20px;
   }
   .tsName {
     font-size: 14px; /* 🔽 plus propre */
