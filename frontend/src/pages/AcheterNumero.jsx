@@ -10,27 +10,57 @@ const [error, setError] = useState(false);
   const navigate = useNavigate();
 useEffect(() => {
   const loadIssues = async () => {
+    const start = performance.now();
+    console.log("🟢 AcheterNumero : DÉBUT");
+
     try {
       setLoading(true);
       setError(false);
+
+      console.log("🌐 Appel API...");
+      const apiStart = performance.now();
 
       const res = await fetch(
         "https://atlasiakids-backend.onrender.com/api/issues?limit=100"
       );
 
-      if (!res.ok) {
-        throw new Error("Erreur API");
-      }
+      console.log(
+        "🌐 API réponse :",
+        Math.round(performance.now() - apiStart),
+        "ms"
+      );
 
+      if (!res.ok) throw new Error("Erreur API");
+
+      const jsonStart = performance.now();
       const data = await res.json();
 
-      console.log("ALL ISSUES:", data);
+      console.log(
+        "📦 JSON reçu :",
+        Math.round(performance.now() - jsonStart),
+        "ms"
+      );
+
+      console.log("📚 Nombre de magazines :", data.length);
+      console.log("📚 Magazines :", data);
+
       setIssues(data);
+
+      console.log(
+        "⚛️ setIssues terminé :",
+        Math.round(performance.now() - start),
+        "ms"
+      );
     } catch (err) {
-      console.error("API error:", err);
+      console.error("❌ API error:", err);
       setError(true);
     } finally {
       setLoading(false);
+      console.log(
+        "🏁 AcheterNumero FIN :",
+        Math.round(performance.now() - start),
+        "ms"
+      );
     }
   };
 
