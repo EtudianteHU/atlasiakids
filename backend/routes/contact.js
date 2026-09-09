@@ -1,8 +1,11 @@
 import { Router } from "express";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 import Contact from "../models/Contact.js";
 
 const router = Router();
+
+// Connexion à Resend
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 router.post("/", async (req, res, next) => {
   console.log("CONTACT ROUTE UPDATED");
@@ -10,6 +13,7 @@ router.post("/", async (req, res, next) => {
   try {
     const { nom, email, telephone, sujet, message } = req.body;
 
+    // Vérification des champs obligatoires
     if (!nom || !email || !message) {
       return res.status(400).json({
         success: false,
@@ -20,57 +24,102 @@ router.post("/", async (req, res, next) => {
     let savedToDb = false;
     let emailSent = false;
 
+    // =========================
+    // 1. ENREGISTREMENT MONGODB
+    // =========================
     try {
-      await Contact.create({ nom, email, telephone, sujet, message });
+      await Contact.create({
+        nom,
+        email,
+        telephone,
+        sujet,
+        message,
+      });
+
       savedToDb = true;
       console.log("Message enregistré en base ✅");
     } catch (dbErr) {
-      console.warn("DB write failed (contact):", dbErr.message);
+      console.warn(
+        "DB write failed (contact):",
+        dbErr.message
+      );
     }
 
-  try {
-  console.log("📧 EMAIL_USER:", process.env.EMAIL_USER);
-  console.log("📧 CONTACT_EMAIL:", process.env.CONTACT_EMAIL);
-  console.log("📧 EMAIL_PASS exists:", !!process.env.EMAIL_PASS);
+    // =========================
+    // 2. ENVOI EMAIL AVEC RESEND
+    // =========================
+    try {
+      console.log("📧 Envoi avec Resend...");
+      console.log(
+        "📧 CONTACT_EMAIL:",
+        process.env.CONTACT_EMAIL
+      );
+      console.log(
+        "📧 RESEND_API_KEY existe:",
+        !!process.env.RESEND_API_KEY
+      );
 
-
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-  connectionTimeout: 10000,
-  greetingTimeout: 10000,
-  socketTimeout: 15000,
-});
-console.log("EMAIL_USER:", process.env.EMAIL_USER);
-console.log("CONTACT_EMAIL:", process.env.CONTACT_EMAIL);
-      const info = await transporter.sendMail({
-        from: `"Atlasia Kids" <${process.env.EMAIL_USER}>`,
+      const { data, error } = await resend.emails.send({
+        from: "Atlasia Kids <contact@atlasiakids.fr>",
+        to: [process.env.CONTACT_EMAIL],
         replyTo: email,
-      to: process.env.CONTACT_EMAIL,
         subject: sujet || "Message du site Atlasia",
+
         html: `
           <h2>Nouveau message depuis le formulaire de contact</h2>
-          <p><strong>Nom :</strong> ${nom}</p>
-          <p><strong>Email :</strong> ${email}</p>
-          <p><strong>Téléphone :</strong> ${telephone || "Non renseigné"}</p>
-          <p><strong>Sujet :</strong> ${sujet || "Aucun sujet"}</p>
-          <p><strong>Message :</strong></p>
-          <p>${message}</p>
+
+          <p>
+            <strong>Nom :</strong>
+            ${nom}
+          </p>
+
+          <p>
+            <strong>Email :</strong>
+            ${email}
+          </p>
+
+          <p>
+            <strong>Téléphone :</strong>
+            ${telephone || "Non renseigné"}
+          </p>
+
+          <p>
+            <strong>Sujet :</strong>
+            ${sujet || "Aucun sujet"}
+          </p>
+
+          <hr />
+
+          <p>
+            <strong>Message :</strong>
+          </p>
+
+          <p>
+            ${message}
+          </p>
         `,
       });
 
-      console.log("Email envoyé :", info.response);
-      emailSent = true;
+      if (error) {
+        console.error("❌ RESEND ERROR:", error);
+      } else {
+        console.log(
+          "✅ Email envoyé avec Resend:",
+          data
+        );
+
+        emailSent = true;
+      }
     } catch (emailErr) {
-  console.error("EMAIL ERROR MESSAGE:", emailErr.message);
-  console.error("EMAIL ERROR CODE:", emailErr.code);
-  console.error("EMAIL ERROR RESPONSE:", emailErr.response);
+      console.error(
+        "❌ EMAIL ERROR MESSAGE:",
+        emailErr.message
+      );
     }
+
+    // =========================
+    // 3. RÉPONSE AU FRONTEND
+    // =========================
 
     if (savedToDb && emailSent) {
       return res.status(200).json({
@@ -82,16 +131,22 @@ console.log("CONTACT_EMAIL:", process.env.CONTACT_EMAIL);
     if (savedToDb && !emailSent) {
       return res.status(207).json({
         success: false,
-        message: "Message enregistré, mais email non envoyé.",
+        message:
+          "Message enregistré, mais email non envoyé.",
       });
     }
 
     return res.status(500).json({
       success: false,
-      message: "Le message n'a pas pu être traité.",
+      message:
+        "Le message n'a pas pu être traité.",
     });
   } catch (err) {
-    console.error("Erreur route contact :", err);
+    console.error(
+      "Erreur route contact :",
+      err
+    );
+
     next(err);
   }
 });
