@@ -7,20 +7,31 @@ const router = Router();
 
 // GET all issues (avec pagination)
 router.get("/", async (req, res, next) => {
+  const start = Date.now();
+
   try {
+    console.log("➡️ GET /api/issues START");
+
     const limit = Math.min(parseInt(req.query.limit) || 20, 100);
     const page = parseInt(req.query.page) || 1;
     const skip = (page - 1) * limit;
 
+    const dbStart = Date.now();
+
     const issues = await Issue.find()
-      .select("_id number title price image")
+      .select("_id number title price image isSoldOut")
       .sort({ number: 1 })
       .skip(skip)
       .limit(limit)
       .lean();
 
+    console.log("🍃 MongoDB :", Date.now() - dbStart, "ms");
+
     res.json(issues);
+
+    console.log("✅ TOTAL :", Date.now() - start, "ms");
   } catch (err) {
+    console.error("❌ /api/issues:", err);
     next(err);
   }
 });
