@@ -9,6 +9,7 @@ const [loading, setLoading] = useState(true);
 const [error, setError] = useState(false);
   const navigate = useNavigate();
 useEffect(() => {
+      console.log("🔄 issues changé :", issues);
   const loadIssues = async () => {
     const start = performance.now();
     console.log("🟢 AcheterNumero : DÉBUT");
@@ -66,6 +67,7 @@ useEffect(() => {
 
   loadIssues();
 }, []);
+  console.log("🎨 RENDER AcheterNumero :", issues);
   // ---------------- UI ----------------
 return (
   <div className="anPage">
