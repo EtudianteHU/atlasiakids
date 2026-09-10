@@ -57,8 +57,8 @@ export default function AcheterNumero() {
 
         console.log("📚 Nombre de magazines :", data.length);
         console.log("📚 Magazines :", data);
-        console.log("🔎 MAG 1 :", data[0]);
-console.log("🔎 MAG 2 :", data[1]);
+          console.log("🔎 MAG 1 :", data[0]);
+         console.log("🔎 MAG 2 :", data[1]);
         setIssues(data);
 
         console.log(
