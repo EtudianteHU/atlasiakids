@@ -59,6 +59,8 @@ export default function AcheterNumero() {
         console.log("📚 Magazines :", data);
           console.log("🔎 MAG 1 :", data[0]);
          console.log("🔎 MAG 2 :", data[1]);
+         console.log("🖼️ IMAGE 1 :", data[0].image);
+console.log("🖼️ IMAGE 2 :", data[1].image);
         setIssues(data);
 
         console.log(
