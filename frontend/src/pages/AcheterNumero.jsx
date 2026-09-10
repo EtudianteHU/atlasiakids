@@ -103,49 +103,53 @@ console.log("🖼️ IMAGE 2 :", data[1].image);
       )}
 
       {!loading && !error && (
-        <section className="anGrid">
-          {issues.map((issue) => (
-            <div key={issue._id} className="anCardLink">
-              <div className="anCard">
-                <div className="anCoverWrap">
-                  <img
-                    className="anCover"
-                    src={issue.image}
-                    alt={issue.title}
-                  />
+     <section className="anGrid">
+  {issues.map((issue) => {
+    console.log("🟣 MAP MAGAZINE :", issue.number, issue.title);
 
-                  {issue.isSoldOut ? (
-                    <div className="anSoldOutCircle">
-                      <span>ÉPUISÉ</span>
-                    </div>
-                  ) : (
-                    <button
-                      className="anAddBtn"
-                      onClick={() =>
-                        navigate(`/acheter/numero/${issue.number}`)
-                      }
-                    >
-                      Voir le produit
-                    </button>
-                  )}
-                </div>
+    return (
+      <div key={issue._id} className="anCardLink">
+        <div className="anCard">
+          <div className="anCoverWrap">
+            <img
+              className="anCover"
+              src={issue.image}
+              alt={issue.title}
+            />
 
-                <div className="anInfo">
-                  <div className="anIssueTitle">
-                    {issue.title}
-                  </div>
-
-                  <div className="anPrice">
-                    {Number(issue.price).toLocaleString("fr-FR", {
-                      style: "currency",
-                      currency: "EUR",
-                    })}
-                  </div>
-                </div>
+            {issue.isSoldOut ? (
+              <div className="anSoldOutCircle">
+                <span>ÉPUISÉ</span>
               </div>
+            ) : (
+              <button
+                className="anAddBtn"
+                onClick={() =>
+                  navigate(`/acheter/numero/${issue.number}`)
+                }
+              >
+                Voir le produit
+              </button>
+            )}
+          </div>
+
+          <div className="anInfo">
+            <div className="anIssueTitle">
+              {issue.title}
             </div>
-          ))}
-        </section>
+
+            <div className="anPrice">
+              {Number(issue.price).toLocaleString("fr-FR", {
+                style: "currency",
+                currency: "EUR",
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  })}
+</section>
       )}
     </div>
   );
