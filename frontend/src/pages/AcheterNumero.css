@@ -1,11 +1,10 @@
+
 /* =========================
-   AcheterNumero.css (COMPLET)
-   - Overlay VERT animé (haut -> bas)
-   - Bouton ORANGE "Cliquez ici"
-   - Effets uniquement sur ordinateur (hover)
-========================= */
+   AcheterNumero.css
+   ========================= */
 
 /* --------- Page --------- */
+
 .anPage {
   background: #ffffff;
   padding: 28px 24px 0;
@@ -15,6 +14,7 @@
 }
 
 /* --------- Grid --------- */
+
 .anGrid {
   display: grid;
   grid-template-columns: repeat(5, minmax(170px, 1fr));
@@ -23,12 +23,14 @@
 }
 
 /* --------- Card link --------- */
+
 .anCardLink {
   text-decoration: none;
   color: inherit;
 }
 
 /* --------- Card --------- */
+
 .anCard {
   border-radius: 10px;
   overflow: hidden;
@@ -37,6 +39,7 @@
 }
 
 /* --------- Cover --------- */
+
 .anCoverWrap {
   position: relative;
   border-radius: 10px;
@@ -45,7 +48,8 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
 }
 
-/* IMAGE */
+/* --------- Image --------- */
+
 .anCover {
   width: 100%;
   height: 340px;
@@ -54,7 +58,8 @@
   transition: transform 0.25s ease;
 }
 
-/* OVERLAY VERT animé du haut vers le bas */
+/* --------- Overlay vert --------- */
+
 .anCoverWrap::after {
   content: "";
   position: absolute;
@@ -64,13 +69,14 @@
     rgba(32, 214, 168, 0.55) 0%,
     rgba(32, 214, 168, 0.35) 100%
   );
-  transform: translateY(-100%);  /* commence caché en haut */
+  transform: translateY(-100%);
   transition: transform 0.35s ease;
   z-index: 1;
   pointer-events: none;
 }
 
-/* --------- Bouton ORANGE --------- */
+/* --------- Bouton orange --------- */
+
 .anAddBtn {
   position: absolute;
   left: 14px;
@@ -83,16 +89,17 @@
   background: #ff7a2f;
   color: #fff;
   font-weight: 900;
-
-  opacity: 1;          /* 🔥 toujours visible */
+  opacity: 1;
   transform: none;
   z-index: 10;
 }
+
 .anAddBtn:hover {
   filter: brightness(0.98);
 }
 
 /* --------- Sold out --------- */
+
 .anSoldOutCircle {
   position: absolute;
   inset: 0;
@@ -116,6 +123,7 @@
 }
 
 /* --------- Info --------- */
+
 .anInfo {
   text-align: center;
   padding-top: 12px;
@@ -136,31 +144,22 @@
 }
 
 /* ======================
-   PC UNIQUEMENT (hover)
-====================== */
-@media (hover: hover) and (pointer: fine) {
+   PC uniquement
+   ====================== */
 
-  /* le vert descend du haut vers le bas */
+@media (hover: hover) and (pointer: fine) {
   .anCardLink:hover .anCoverWrap::after {
     transform: translateY(0);
   }
 
-  /* zoom image */
   .anCardLink:hover .anCover {
     transform: scale(1.05);
   }
 
-  /* bouton apparaît */
- .anAddBtn {
-  opacity: 1;
-}
-
-  /* carte monte */
   .anCardLink:hover .anCard {
     transform: translateY(-5px);
   }
 
-  /* enlever l'outline au clic (optionnel) */
   .anCardLink:focus,
   .anCardLink:active {
     outline: none;
@@ -168,27 +167,37 @@
 }
 
 /* --------- Responsive --------- */
+
 @media (max-width: 1200px) {
-  .anGrid { grid-template-columns: repeat(4, 1fr); }
+  .anGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
+
 @media (max-width: 980px) {
-  .anGrid { grid-template-columns: repeat(3, 1fr); }
+  .anGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
+
 @media (max-width: 768px) {
   .anGrid {
-    grid-template-columns: 1fr; /* 👈 UNE colonne */
-     justify-items: center;
+    grid-template-columns: 1fr;
+    justify-items: center;
   }
-    .anCard {
+
+  .anCard {
     width: 100%;
-    max-width: 260px; /* 👈 réduit la largeur */
+    max-width: 260px;
   }
 
   .anCover {
-    height: auto; /* 👈 garde bonnes proportions */
+    height: auto;
   }
+
   .anAddBtn {
     opacity: 1;
     transform: none;
   }
 }
+

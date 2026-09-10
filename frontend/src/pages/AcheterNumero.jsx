@@ -31,11 +31,24 @@ export default function AcheterNumero() {
         console.log("🌐 Appel API...");
 
         const apiStart = performance.now();
+           console.log(
+        "🚀 FETCH START :",
+        new Date().toLocaleTimeString()
+      );
 
         const res = await fetch(
           "https://atlasiakids-backend.onrender.com/api/issues?limit=100"
         );
+           console.log(
+        "⏱️ FETCH DURÉE :",
+        Math.round(performance.now() - apiStart),
+        "ms"
+      );
 
+      console.log(
+        "📡 FETCH RESPONSE :",
+        new Date().toLocaleTimeString()
+      );
         console.log(
           "🌐 API réponse :",
           Math.round(performance.now() - apiStart),
