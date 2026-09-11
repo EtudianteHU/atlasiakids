@@ -13,6 +13,7 @@
     "video": "/videos/about-kids2.mp4",
     "decorImage": "/images/turtle.png",
      "backgroundImage": "/images/pattern-2.png",
+      "backgroundOverlayImage": "/images/about-kids-decoration.png",
        "backgroundColor": "#4DB374",
     "reverse": false
   },
