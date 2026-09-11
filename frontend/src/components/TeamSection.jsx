@@ -38,16 +38,6 @@ export default function TeamSection() {
                     alt={member.name}
                     className="team-image"
                   />
-
-                  <div
-                    className={`team-overlay ${
-                      isActive ? "team-overlay--open" : ""
-                    }`}
-                  >
-                    <div className="team-overlay-shape team-overlay-shape--top" />
-                    <div className="team-overlay-shape team-overlay-shape--bottom" />
-                    <p className="team-overlay-text">{member.description}</p>
-                  </div>
                 </div>
 
                 <div className="team-content">
