@@ -44,7 +44,12 @@ export default function NextIssueSection({
       <div className={`content-wrapper ${reverse ? "reverse" : ""}`}>
         <div className="media">
           {video ? (
-            <video controls poster={image} className="section-media">
+           <video
+  controls
+  poster={image}
+  className="section-media"
+  playsInline
+>
               <source src={video} type="video/mp4" />
             </video>
           ) : image ? (
