@@ -54,6 +54,7 @@ export default function About() {
           title={about1.title}
           points={about1.points}
           video={about1.video}
+           image={about1.image}
           decorImage={about1.decorImage}
           backgroundImage={about1.backgroundImage}
           backgroundColor={about1.backgroundColor}
