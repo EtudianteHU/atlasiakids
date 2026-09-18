@@ -54,7 +54,7 @@ export default function FooterBuyer() {
 
           <div className="footer-contactItem">
             <FaEnvelope />
-            <p>@atlasiakidsfr</p>
+            <p>atlasiakidsfr@gmail.com</p>
           </div>
 
         </div>
