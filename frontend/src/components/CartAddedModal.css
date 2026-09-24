@@ -117,7 +117,7 @@
 
 @media (max-width: 767px){
 .camModal{
-top:160px;
+top:10px;
 }
 .camContent {
   display: grid;
