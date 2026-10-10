@@ -26,6 +26,7 @@ import ScrollToTop from "./components/ScrollToTop.jsx";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 import CookieBanner from "./components/CookieBanner";
 import MentionsLegalesPage from "./pages/MentionLegal.jsx";
+import { PayPalProvider } from "@paypal/react-paypal-js/sdk-v6";
 import { useEffect } from "react";
 export default function App() {
 useEffect(() => {
@@ -48,8 +49,13 @@ useEffect(() => {
     .catch(() => {});
 }, []);
   return (
+  <PayPalProvider
+    clientId={process.env.REACT_APP_PAYPAL_CLIENT_ID}
+    environment="sandbox"
+    components={["paypal-payments"]}
+    pageType="checkout"
+  >
     <Router>
-
   {/* 🔵 GLOBAL CURSOR */}
   <div
     className="cursor-dot"
@@ -97,5 +103,6 @@ useEffect(() => {
       </Routes>
       </AuthProvider>
     </Router>
+     </PayPalProvider>
   );
 }

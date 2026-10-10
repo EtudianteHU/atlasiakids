@@ -2,7 +2,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import "./CheckoutPage.css";
-
 const API_URL = process.env.REACT_APP_API_URL;
 
 const readCart = () => {
@@ -43,7 +42,8 @@ export default function CheckoutPage() {
   const [city, setCity] = useState("");
 
   const [loading, setLoading] = useState(false);
-
+const [paymentMethod, setPaymentMethod] =
+  useState("stripe");
   // ==================================================
   // PANIER
   // ==================================================
@@ -155,7 +155,6 @@ export default function CheckoutPage() {
 
   const handlePay = async (e) => {
     e.preventDefault();
-
     if (!validateForm()) return;
 
     try {
@@ -315,10 +314,9 @@ try {
       setLoading(false);
     }
   };
-
-  // ==================================================
-  // AFFICHAGE
-  // ==================================================
+// ==================================================
+// AFFICHAGE
+// ==================================================
 
   return (
     <div className="ckPage">
@@ -414,9 +412,7 @@ try {
                 }
               >
                 <option>France</option>
-                <option>Belgique</option>
-                <option>Maroc</option>
-                <option>Canada</option>
+          
               </select>
 
               <div className="ckGrid2">
@@ -536,53 +532,33 @@ try {
                 sécurisées et cryptées.
               </div>
 
-              <div className="ckPayBox">
+             <div className="ckPayBox">
 
-                <div className="ckPayTop">
+  {/* CARTE DE CRÉDIT */}
+  <label className="ckRadio">
+    <input
+      type="radio"
+      name="pay"
+      value="stripe"
+      checked={paymentMethod === "stripe"}
+      onChange={() => setPaymentMethod("stripe")}
+    />
 
-                  <label className="ckRadio">
+    <span>Carte de crédit</span>
+  </label>
 
-                    <input
-                      type="radio"
-                      name="pay"
-                      checked
-                      readOnly
-                    />
+  {paymentMethod === "stripe" && (
+    <div
+      className="ckSmall"
+      style={{ marginTop: "12px" }}
+    >
+      Après validation, vous serez redirigé vers
+      Stripe pour payer en toute sécurité.
+    </div>
+  )}
 
-                    <span>
-                      Carte de crédit
-                    </span>
-
-                  </label>
-
-                </div>
-
-                <div
-                  className="ckSmall"
-                  style={{ marginTop: "12px" }}
-                >
-                  Après validation, vous serez
-                  redirigé vers Stripe pour payer
-                  en toute sécurité.
-                </div>
-
-                <label className="ckCheckbox">
-
-                  <input
-                    type="checkbox"
-                    defaultChecked
-                  />
-
-                  <span>
-                    Utilisez l'adresse renseignée
-                    comme adresse de facturation.
-                  </span>
-
-                </label>
-
-              </div>
-
-            </div>
+</div>
+</div>
 
             {/* BOUTON */}
 
