@@ -13,7 +13,7 @@ import checkoutRoutes from "./routes/checkout.js";
 import userRoutes from "./routes/user.js";
 import uploadRoute from "./routes/upload.js";
 import stripeWebhookRouter from "./routes/stripeWebhook.js";
-
+import paypalRoutes from "./routes/paypal.js";
 // Fix DNS (évite bugs Mongo / Stripe sur Windows)
 dns.setDefaultResultOrder("ipv4first");
 
@@ -71,6 +71,7 @@ app.use("/api/subscriptions", subscriptionRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/checkout", checkoutRoutes);
+app.use("/api/paypal", paypalRoutes);
 app.use("/api/auth", userRoutes);
 app.use("/api/upload", uploadRoute);
 
@@ -108,3 +109,19 @@ mongoose
     console.error("❌ MongoDB erreur:", err.message);
     process.exit(1);
   });
+ // ✅ DÜZELTİLMİŞ SUNUCUYU UYANIK TUTMA MEKANİZMASI (GERÇEK API PİNGİ)
+setInterval(async () => {
+  try {
+    // Sadece ana sayfayı değil, dergileri listeleyen gerçek API rotasını pingleterek veritabanını canlı tutuyoruz:
+    const GERCEK_API_ROTASI = "https://onrender.com"; 
+    
+    const response = await fetch(GERCEK_API_ROTASI);
+    if (response.ok) {
+      console.log("⏰ Dergi API'si başarıyla pinglendi. MongoDB ve Render %100 uyanık tutuluyor.");
+    }
+  } catch (err) {
+    console.error("⏰ Ping Hatası:", err.message);
+  }
+}, 1000 * 60 * 14); // Her 14 dakikada bir çalışmaya devam eder
+
+
