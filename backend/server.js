@@ -124,4 +124,3 @@ setInterval(async () => {
   }
 }, 1000 * 60 * 14); // Her 14 dakikada bir çalışmaya devam eder
 
-
