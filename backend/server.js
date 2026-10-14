@@ -113,7 +113,7 @@ mongoose
 setInterval(async () => {
   try {
     // Sadece ana sayfayı değil, dergileri listeleyen gerçek API rotasını pingleterek veritabanını canlı tutuyoruz:
-    const GERCEK_API_ROTASI = "https://onrender.com"; 
+    const GERCEK_API_ROTASI = "https://atlasiakids-backend.onrender.com"; 
     
     const response = await fetch(GERCEK_API_ROTASI);
     if (response.ok) {
