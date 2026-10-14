@@ -124,11 +124,15 @@ console.log("🖼️ IMAGE 2 :", data[1].image);
       <div key={issue._id} className="anCardLink">
         <div className="anCard">
           <div className="anCoverWrap">
-            <img
-              className="anCover"
-              src={issue.image}
-              alt={issue.title}
-            />
+           <img
+  className="anCover"
+  src={issue.image}
+  alt={issue.title}
+  width="300"
+  height="400"
+  loading="lazy"
+/>
+
 
             {issue.isSoldOut ? (
               <div className="anSoldOutCircle">
