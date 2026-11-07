@@ -1,6 +1,6 @@
 import React from "react";
 import "./HeroMagazine.css";
-import coverLeftImg from "../images/page-de-garde-1.png";
+import coverLeftImg from "../images/page-de-garde-1.jpg";
 import coverRightImg from "../images/page-de-garde-2.png";
 export default function HeroMagazine({ onLeftClick, onRightClick, backgroundImage,className = ""
  }){
