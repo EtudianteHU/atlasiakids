@@ -98,18 +98,21 @@ const [paymentMethod, setPaymentMethod] =
   // TOTAL
   // ==================================================
 
-  const subtotal = useMemo(() => {
+   const subtotal = useMemo(() => {
+    // 1. Yıllık Abonelik ise: İsviçre 94 €, diğerleri 84 €
     if (isSubscription) {
-      return planPrice;
+      return country === "Suisse" ? 94 : 84;
     }
 
+    // 2. Tek Seferlik Ürün ise: İsviçre 8,99 € (kargo dahil), diğerleri mevcut fiyatı
     return safeCart.reduce((sum, item) => {
-      const price = parsePrice(item.price);
+      const price = country === "Suisse" ? 8.99 : parsePrice(item.price);
       const quantity = Number(item.quantity || 1);
 
       return sum + price * quantity;
     }, 0);
-  }, [safeCart, isSubscription, planPrice]);
+  }, [safeCart, isSubscription, country]);
+
 
   const cartCount = useMemo(() => {
     if (isSubscription) return 1;
@@ -411,8 +414,8 @@ try {
                   setCountry(e.target.value)
                 }
               >
-                <option>France</option>
-          
+              <option value="France">France</option>
+                <option value="Suisse">Suisse</option>
               </select>
 
               <div className="ckGrid2">
