@@ -91,8 +91,14 @@ const [paymentMethod, setPaymentMethod] =
   // ==================================================
 
   const isSubscription = Boolean(abonnement);
+const planPrice = useMemo(() => {
+  if (!abonnement) return 0;
+  if (abonnement === "annuel" && country === "Suisse") {
+    return 94;
+  }
+  return PLAN_PRICES[abonnement] || 0;
+}, [abonnement, country]);
 
-  const planPrice = PLAN_PRICES[abonnement] || 0;
 
   // ==================================================
   // TOTAL
