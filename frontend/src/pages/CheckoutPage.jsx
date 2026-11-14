@@ -91,6 +91,7 @@ const [paymentMethod, setPaymentMethod] =
   // ==================================================
 
   const isSubscription = Boolean(abonnement);
+
 const planPrice = useMemo(() => {
   if (!abonnement) return 0;
   if (abonnement === "annuel" && country === "Suisse") {
@@ -664,10 +665,11 @@ try {
                   </div>
 
                   <div className="ckItemPrice">
-                    {formatEUR(
-                      parsePrice(item.price) *
-                        Number(item.quantity || 1)
-                    )}
+                {formatEUR(
+  (country === "Suisse" ? 8.99 : parsePrice(item.price)) *
+    Number(item.quantity || 1)
+)}
+
                   </div>
 
                 </div>
