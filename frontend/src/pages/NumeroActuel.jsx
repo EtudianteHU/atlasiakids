@@ -27,7 +27,7 @@ export default function NumeroActuel() {
 />
 
       {/* 5premières sections */}
-      {issues.slice(0, 4).map((issue, index) => (
+      {issues.slice(0, 5).map((issue, index) => (
         <NextIssueSection
           key={issue.id}
           title={issue.title}

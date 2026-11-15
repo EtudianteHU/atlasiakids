@@ -15,6 +15,9 @@ export default function About() {
  const about3 = AboutSection.find(
   (section) => section.id === "about-3"
 );
+ const about2 = AboutSection.find(
+  (section) => section.id === "about-2"
+);
 
   const about1 = AboutSection.find(
     (section) => section.id === "about-1"
@@ -63,22 +66,21 @@ export default function About() {
       )}
       <TeamSection />
 
-      {issue && (
-        <NextIssueSection
-          key={issue.id}
-          title={issue.title}
-          subtitle={issue.subtitle}
-          points={issue.points}
-          image={issue.image}
-          decorImage="/images/turtle.png"
-          onClick={() => handleAction(issue.id)}
-          reverse={false}
-          backgroundImage={issue.backgroundImage}
-          backgroundColor={issue.backgroundColor}
-          isFifth={true}
-          svgPattern={issue.svgPattern}
-        />
-      )}
+    {about2 && (
+  <NextIssueSection
+    key={about2.id}
+    title={about2.title}
+    paragraphs={about2.paragraphs}
+    image={about2.image}
+     video={about2.video}
+    buttonText={about2.buttonText}
+    buttonLink={about2.buttonLink}
+    backgroundImage={about2.backgroundImage}
+    backgroundColor={about2.backgroundColor}
+    reverse={about2.reverse}
+     className="about-2-section"
+  />
+)}
     </>
   );
 }
