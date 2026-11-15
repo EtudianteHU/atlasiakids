@@ -31,6 +31,7 @@
     "video": "/videos/about-kids.mp4",
       "backgroundImage": "/images/pattern-2.png",
         "backgroundColor": "#F9B233",
+          "image": "/images/about-kids-poster2.jpg",
     "reverse": true,
     "centerVideo": true
   },
