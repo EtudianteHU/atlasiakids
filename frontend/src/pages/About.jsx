@@ -3,14 +3,9 @@ import HeroAbonnement from "../sections/HeroAbonnement";
 import HeroMagazine from "../components/HeroMagazine";
 import NextIssueSection from "../sections/NextIssueSection";
 import TeamSection from "../components/TeamSection.jsx";
-import issues from "../data/numeroActuel.json";
 import AboutSection from "../data/aboutSections.json";
-export default function About() {
-  const handleAction = (id) => {
-    console.log("action:", id);
-  };
 
-  const issue = issues?.[4];
+export default function About() {
 
  const about3 = AboutSection.find(
   (section) => section.id === "about-3"

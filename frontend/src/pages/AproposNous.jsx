@@ -3,11 +3,9 @@ import HeroAbonnement from "../sections/HeroAbonnement";
 import AboutSection from "../data/AboutSection";
 import HeroMagazine from "../components/HeroMagazine";
 import NextIssueSection from "../sections/NextIssueSection";
-import issues from "../data/numeroActuel.json";
 import "./AproposNous.css"
-export default function About() {
-  const issue = issues?.[4];
 
+export default function About() {
  const about3 = AboutSection.find(
   (section) => section.id === "about-3"
 );
