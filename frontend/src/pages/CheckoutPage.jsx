@@ -2,7 +2,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import "./CheckoutPage.css";
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
