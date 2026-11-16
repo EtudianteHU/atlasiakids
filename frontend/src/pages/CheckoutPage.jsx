@@ -424,7 +424,7 @@ try {
                 }
               >
               <option value="France">France</option>
-              <option value="France">France</option>
+              <option value="France">Belgique</option>
                 <option value="Suisse">Suisse</option>
               </select>
 
