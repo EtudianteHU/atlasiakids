@@ -249,5 +249,36 @@ router.post("/create-session", async (req, res) => {
     });
   }
 });
+// ==================================================
+// VERIFY SESSION (SUCCESS PAGE İÇİN)
+// ==================================================
+
+router.get("/session/:sessionId", async (req, res) => {
+  try {
+    const { sessionId } = req.params;
+
+    if (!sessionId) {
+      return res.status(400).json({
+        message: "Session ID manquant",
+      });
+    }
+
+    const session = await stripe.checkout.sessions.retrieve(sessionId);
+
+    return res.json({
+      id: session.id,
+      payment_status: session.payment_status,
+      amount_total: session.amount_total,
+      currency: session.currency,
+      customer_email:
+        session.customer_details?.email || session.customer_email || "",
+    });
+  } catch (err) {
+    console.error("❌ ERREUR VERIFY SESSION:", err.message);
+    return res.status(500).json({
+      message: "Impossible de vérifier le paiement",
+    });
+  }
+});
 
 export default router;
