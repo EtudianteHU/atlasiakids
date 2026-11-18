@@ -17,9 +17,10 @@ export default function CustomerForm({ formData, onChange }) {
       <h2 className="ckH2" style={{ marginTop: "24px" }}>Livraison</h2>
       <label className="ckLabel">Pays / Région</label>
       <select className="ckInput" name="country" value={formData.country} onChange={onChange}>
+          <option value="Belgique">Belgique</option>
         <option value="France">France</option>
         <option value="Suisse">Suisse</option>
-      </select>
+      </select>s
 
       <div className="ckGrid2" style={{ marginTop: "12px" }}>
         <input className="ckInput" name="firstName" placeholder="Prénom *" value={formData.firstName} onChange={onChange} required />
