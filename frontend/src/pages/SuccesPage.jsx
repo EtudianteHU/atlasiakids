@@ -3,7 +3,7 @@ import { Link, useSearchParams } from "react-router-dom";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
-// Fonction pour afficher le prix proprement
+// Tutarı düzgün formatlamak için fonksiyon
 const formatAmount = (amount, currency = "EUR") => {
   if (typeof amount !== "number") return "";
   return new Intl.NumberFormat("fr-FR", {
@@ -15,6 +15,9 @@ const formatAmount = (amount, currency = "EUR") => {
 export default function SuccessPage() {
   const [searchParams] = useSearchParams();
   const sessionId = searchParams.get("session_id");
+  const isPayPal = searchParams.get("paypal") === "true";
+  const paypalEmail = searchParams.get("email");
+  const paypalAmount = searchParams.get("amount");
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -22,7 +25,18 @@ export default function SuccessPage() {
 
   useEffect(() => {
     const verifyPayment = async () => {
-      // 🔴 1. Si pas de session_id
+      // ✅ 1. Ödeme PayPal ile yapıldıysa doğrudan onayla
+      if (isPayPal) {
+        setSessionData({
+          customer_email: paypalEmail || "",
+          amount_total: paypalAmount ? Math.round(Number(paypalAmount) * 100) : null,
+          currency: "EUR",
+        });
+        setLoading(false);
+        return;
+      }
+
+      // 🔴 2. Stripe ödemesi ama session_id yoksa hata ver
       if (!sessionId) {
         setError("Identifiant de session manquant.");
         setLoading(false);
@@ -30,21 +44,18 @@ export default function SuccessPage() {
       }
 
       try {
-        // 🔵 2. Appel backend
+        // 🔵 3. Stripe ödemesini backend'den doğrula
         const res = await fetch(`${API_URL}/api/checkout/session/${sessionId}`);
         const data = await res.json();
 
-        // 🔴 3. erreur serveur
         if (!res.ok) {
           throw new Error(data.message || "Erreur serveur.");
         }
 
-        // 🔴 4. paiement non validé
         if (data.payment_status !== "paid") {
           throw new Error("Le paiement n'est pas confirmé.");
         }
 
-        // ✅ 5. paiement OK
         setSessionData(data);
       } catch (err) {
         setError(err.message);
@@ -54,9 +65,9 @@ export default function SuccessPage() {
     };
 
     verifyPayment();
-  }, [sessionId]);
+  }, [sessionId, isPayPal, paypalEmail, paypalAmount]);
 
-  // ⏳ LOADING
+  // ⏳ YÜKLENİYOR EKRANI
   if (loading) {
     return (
       <div style={styles.container}>
@@ -65,7 +76,7 @@ export default function SuccessPage() {
     );
   }
 
-  // ❌ ERREUR
+  // ❌ HATA EKRANI
   if (error) {
     return (
       <div style={styles.container}>
@@ -80,7 +91,7 @@ export default function SuccessPage() {
     );
   }
 
-  // ✅ SUCCESS
+  // ✅ BAŞARI EKRANI
   return (
     <div style={styles.container}>
       <h1>✅</h1>

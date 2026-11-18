@@ -51,7 +51,7 @@ useEffect(() => {
   return (
   <PayPalProvider
     clientId={process.env.REACT_APP_PAYPAL_CLIENT_ID}
-    environment="sandbox"
+    environment="live"
     components={["paypal-payments"]}
     pageType="checkout"
   >
