@@ -1,5 +1,9 @@
 import React from "react";
 import { PayPalOneTimePaymentButton } from "@paypal/react-paypal-js/sdk-v6";
+// Importation de vos logos depuis src/images
+import visaLogo from "../../images/visa.png";
+import mastercardLogo from "../../images/mastercard.png";
+import paypalLogo from "..//../images/paypal.png";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -14,6 +18,16 @@ export default function PaymentSection({
   loading,
   setLoading,
 }) {
+  const logoBadgeStyle = {
+    height: "24px",
+    width: "38px",
+    objectFit: "contain",
+    borderRadius: "6px",
+    border: "1px solid #e2e8f0",
+    backgroundColor: "#ffffff",
+    padding: "2px 4px",
+  };
+
   const handleStripePay = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
@@ -98,6 +112,7 @@ export default function PaymentSection({
       <h2 className="ckH2">Paiement</h2>
       <p className="ckSmall">Toutes les transactions sont sécurisées et chiffrées.</p>
 
+      {/* Option Carte bancaire (Visa + Mastercard) */}
       <div
         className="ckPayBox"
         onClick={() => setPaymentMethod("stripe")}
@@ -114,36 +129,13 @@ export default function PaymentSection({
             Carte bancaire
           </label>
           <div className="ckBadges">
-          <span
-  style={{
-    display: "inline-flex",
-    alignItems: "center",
-    justifyContent: "center",
-    height: "24px",
-    padding: "0 10px",
-    borderRadius: "6px",
-    border: "1px solid #e2e8f0",
-    backgroundColor: "#fff",
-    color: "#1434CB",
-    fontWeight: "900",
-    fontStyle: "italic",
-    fontSize: "13px",
-    letterSpacing: "0.5px",
-  }}
->
-  VISA
-</span>
-
-            <span>
-              <svg width="26" height="16" viewBox="0 0 24 16" fill="none" xmlns="http://w3.org">
-                <circle cx="8.5" cy="8" r="7" fill="#EB001B"/>
-                <circle cx="15.5" cy="8" r="7" fill="#F79E1B" fillOpacity="0.85"/>
-              </svg>
-            </span>
+            <img src={visaLogo} alt="Visa" style={logoBadgeStyle} />
+            <img src={mastercardLogo} alt="Mastercard" style={logoBadgeStyle} />
           </div>
         </div>
       </div>
 
+      {/* Option PayPal */}
       <div
         className="ckPayBox"
         onClick={() => setPaymentMethod("paypal")}
@@ -159,6 +151,9 @@ export default function PaymentSection({
             />
             PayPal
           </label>
+          <div className="ckBadges">
+            <img src={paypalLogo} alt="PayPal" style={logoBadgeStyle} />
+          </div>
         </div>
       </div>
 
