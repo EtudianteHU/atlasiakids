@@ -35,7 +35,7 @@ export default function CustomerForm({ formData, onChange }) {
         <input className="ckInput" name="city" placeholder="Ville *" value={formData.city} onChange={onChange} required />
       </div>
 
-      <input className="ckInput" style={{ marginTop: "12px" }} name="phone" placeholder="Téléphone (optionnel)" value={formData.phone} onChange={onChange} />
+      <input className="ckInput" style={{ marginTop: "12px" }} name="phone" placeholder="Téléphone" value={formData.phone} onChange={onChange} />
     </div>
   );
 }
