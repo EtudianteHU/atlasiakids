@@ -114,11 +114,26 @@ export default function PaymentSection({
             Carte bancaire
           </label>
           <div className="ckBadges">
-            <span>
-              <svg width="34" height="12" viewBox="0 0 38 12" fill="none" xmlns="http://w3.org">
-                <path d="M15.4 0.3L12.8 11.7H15.9L18.5 0.3H15.4ZM26.8 7.6L28.4 3.2L29.3 7.6H26.8ZM30.3 11.7H33.2L30.7 0.3H28.1C27.5 0.3 27 0.6 26.8 1.2L22.3 11.7H25.5L26.1 10H30L30.3 11.7ZM22.2 8C22.2 5 18 4.8 18 3.5C18 3.1 18.4 2.7 19.3 2.6C19.8 2.5 21.1 2.5 22.5 3.1L23.1 0.6C22.3 0.3 21.3 0 20 0C16.9 0 14.8 1.6 14.8 4C14.8 5.7 16.4 6.7 17.6 7.3C18.8 7.9 19.2 8.3 19.2 8.8C19.2 9.6 18.2 10 17.3 10C15.7 10 14.8 9.6 14.1 9.2L13.5 11.8C14.3 12.1 15.7 12.4 17.1 12.4C20.4 12.4 22.2 10.8 22.2 8ZM11.9 0.3L7 11.7H3.7L1.3 2.6C1.1 2 0.9 1.8 0.4 1.5C-0.3 1.1 -1.5 0.8 -2.5 0.6L-2.4 0.3H2.8C3.5 0.3 4.1 0.7 4.2 1.5L5.5 8.3L8.6 0.3H11.9Z" fill="#1434CB"/>
-              </svg>
-            </span>
+          <span
+  style={{
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "24px",
+    padding: "0 10px",
+    borderRadius: "6px",
+    border: "1px solid #e2e8f0",
+    backgroundColor: "#fff",
+    color: "#1434CB",
+    fontWeight: "900",
+    fontStyle: "italic",
+    fontSize: "13px",
+    letterSpacing: "0.5px",
+  }}
+>
+  VISA
+</span>
+
             <span>
               <svg width="26" height="16" viewBox="0 0 24 16" fill="none" xmlns="http://w3.org">
                 <circle cx="8.5" cy="8" r="7" fill="#EB001B"/>
